@@ -1,2 +1,2 @@
-# nomada.digital.github.io
+# Nómada Digital
 Página web personal. Artículos sobre programación e investigaciones.
