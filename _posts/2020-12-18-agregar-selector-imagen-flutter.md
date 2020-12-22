@@ -50,7 +50,7 @@ Para iOS, abra el archivo `Info.plist` que se encuentra en la carpeta `ios/Runne
 ## **Paso 3**: Función de selector de imágenes
 
 En la clase `State` de `StatefulWidget` de nuestra pantalla, declare una variable de tipo `File` para contener la imagen
-elegida por el usuario.
+elegida por el usuario. 
 
     File _image;
 
