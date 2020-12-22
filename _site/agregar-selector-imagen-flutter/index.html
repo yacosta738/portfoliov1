@@ -1,0 +1,640 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Agregar un selector de imágenes a una aplicación hecha en Flutter - Nómada Digital</title>
+<meta name="description" content="En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Nómada Digital">
+<meta property="og:title" content="Agregar un selector de imágenes a una aplicación hecha en Flutter">
+<meta property="og:url" content="http://localhost:4000/agregar-selector-imagen-flutter/">
+
+
+  <meta property="og:description" content="En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/flutter-selector-imagen/portada.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-12-18T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/agregar-selector-imagen-flutter/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nómada Digital",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Nómada Digital Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Inicio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Artículos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categorías</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >Contacto</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Agregar un selector de imágenes a una aplicación hecha en Flutter</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.png" alt="Yuniel Acosta Pérez" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Yuniel Acosta Pérez</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        
+        Desarrollador de aplicaciones de escritorio, web y móviles. Entusiasta de la tecnología. Más de 3 años de experiencia en la industria del software.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Ciego de Ávila</span>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:yunielacosta738@gmail.com">
+            <meta itemprop="email" content="yunielacosta738@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Agregar un selector de imágenes a una aplicación hecha en Flutter">
+    <meta itemprop="description" content="En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos">
+    <meta itemprop="datePublished" content="December 18, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Agregar un selector de imágenes a una aplicación hecha en Flutter
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2020-12-18T00:00:00-05:00">December 18, 2020 </time>&emsp;
+          
+          
+        </p>
+        <p><img src="/assets/images/flutter-selector-imagen/portada.png" alt="" /></p>
+
+<p>El selector de imágenes es un componente común que a menudo se necesita para cambiar las fotos de los perfiles de
+usuario entre muchas otras opciones donde es necesario subir una imagen. Con el fin de proveer a nuestra aplicación de
+la opción de subir imágenes seleccionadas desde nuestro dispositivo, ya sea en la cámara o la galería, usaremos
+el <a href="https://pub.dev/packages/image_picker">complemento</a> hecho por desarrolladores de Flutter.</p>
+
+<h2 id="paso-1-agregar-la-dependencia-a-su-archivo-pubspecyaml"><strong>Paso 1</strong>: Agregar la dependencia a su archivo <strong><em>pubspec.yaml</em></strong>.</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image_picker: ^0.6.7+14
+</code></pre></div></div>
+
+<h2 id="paso-2-configurar-las-plataformas-nativas"><strong>Paso 2</strong>: Configurar las plataformas nativas</h2>
+
+<p>A continuación, necesitamos configurar los ajustes nativos. Para la plataforma Android, no se necesita configurar nada.
+Para iOS, abra el archivo <code class="language-plaintext highlighter-rouge">Info.plist</code> que se encuentra en la carpeta <code class="language-plaintext highlighter-rouge">ios/Runner</code> y agregue las siguientes claves.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;NSPhotoLibraryUsageDescription&lt;/key&gt;
+&lt;string&gt;Allow access to photo library&lt;/string&gt;
+
+&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;
+&lt;string&gt;Allow access to camera to capture photos&lt;/string&gt;
+
+&lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;
+&lt;string&gt;Allow access to microphone&lt;/string&gt;
+</code></pre></div></div>
+
+<h2 id="paso-3-función-de-selector-de-imágenes"><strong>Paso 3</strong>: Función de selector de imágenes</h2>
+
+<p>En la clase <code class="language-plaintext highlighter-rouge">State</code> de <code class="language-plaintext highlighter-rouge">StatefulWidget</code> de nuestra pantalla, declare una variable de tipo <code class="language-plaintext highlighter-rouge">File</code> para contener la imagen
+elegida por el usuario.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>File _image;
+</code></pre></div></div>
+
+<p>Ahora escriba dos funciones para seleccionar imágenes a través de la cámara y la galería de fotos, respectivamente. El
+parámetro opcional <code class="language-plaintext highlighter-rouge">imageQuality</code> acepta cualquier valor entre 0 y 100, este parámetro se puede ajustar según el tamaño
+y la calidad que requiera la aplicación. Después de obtener el archivo de imagen, lo guardamos en la variable <code class="language-plaintext highlighter-rouge">_image</code> y
+llamamos a <code class="language-plaintext highlighter-rouge">setState ()</code> para que se pueda mostrar en la pantalla.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50
+    );
+  
+    setState(() {
+      _image = image;
+    });
+  }
+  
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50
+    );
+  
+    setState(() {
+      _image = image;
+    });
+  }
+</code></pre></div></div>
+
+<h2 id="paso-4-crear-un-selector-de-opciones-para-seleccionar-la-cámara-o-la-galería"><strong>Paso 4</strong>: Crear un selector de opciones para seleccionar la cámara o la galería</h2>
+
+<p>A continuación, se observa la función para mostrar un <code class="language-plaintext highlighter-rouge">bottom sheet</code> para que el usuario elija la opción de cámara o
+galería.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void _showPicker(context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Container(
+            child: new Wrap(
+              children: &lt;Widget&gt;[
+                new ListTile(
+                    leading: new Icon(Icons.photo_library),
+                    title: new Text('Photo Library'),
+                    onTap: () {
+                      _imgFromGallery();
+                      Navigator.of(context).pop();
+                    }),
+                new ListTile(
+                  leading: new Icon(Icons.photo_camera),
+                  title: new Text('Camera'),
+                  onTap: () {
+                    _imgFromCamera();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+  );
+}
+</code></pre></div></div>
+
+<h2 id="paso-5-crear-y-configurar-la-vista-de-imagen-en-pantalla"><strong>Paso 5</strong>: Crear y configurar la vista de imagen en pantalla</h2>
+<p>Finalmente, creemos un soporte de imagen de perfil en la pantalla, que abre el selector al hacer clic y muestra la imagen seleccionada.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(),
+    body: Column(
+      children: &lt;Widget&gt;[
+        SizedBox(
+          height: 32,
+        ),
+        Center(
+          child: GestureDetector(
+            onTap: () {
+              _showPicker(context);
+            },
+            child: CircleAvatar(
+              radius: 55,
+              backgroundColor: Color(0xffFDCF09),
+              child: _image != null
+                  ? ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.file(
+                  _image,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                ),
+              )
+                  : Container(
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(50)),
+                width: 100,
+                height: 100,
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.grey[800],
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+</code></pre></div></div>
+
+<p>Listo, ejecute la aplicación y debería ver algo como esto.</p>
+
+<p align="center">
+<img src="/assets/images/flutter-selector-imagen/resultado.gif" />
+</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#android" class="page__taxonomy-item" rel="tag">Android</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#c%C3%A1mara" class="page__taxonomy-item" rel="tag">Cámara</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#flutter" class="page__taxonomy-item" rel="tag">Flutter</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#galer%C3%ADa-de-im%C3%A1genes" class="page__taxonomy-item" rel="tag">Galería de Imágenes</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#ios" class="page__taxonomy-item" rel="tag">iOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programaci%C3%B3n" class="page__taxonomy-item" rel="tag">Programación</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#android" class="page__taxonomy-item" rel="tag">Android</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#flutter" class="page__taxonomy-item" rel="tag">Flutter</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#ios" class="page__taxonomy-item" rel="tag">iOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#programaci%C3%B3n" class="page__taxonomy-item" rel="tag">Programación</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2020-12-18T00:00:00-05:00">December 18, 2020</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/configurar-proxy-global-en-linux/" class="pagination--pager" title="Configurar proxy global en linux
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Nómada Digital</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

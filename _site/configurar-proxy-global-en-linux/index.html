@@ -1,0 +1,928 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Configurar proxy global en linux - Nómada Digital</title>
+<meta name="description" content="En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Nómada Digital">
+<meta property="og:title" content="Configurar proxy global en linux">
+<meta property="og:url" content="http://localhost:4000/configurar-proxy-global-en-linux/">
+
+
+  <meta property="og:description" content="En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/proxy-global/portada-proxy.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-12-08T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/configurar-proxy-global-en-linux/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nómada Digital",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Nómada Digital Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Inicio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Artículos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categorías</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >Contacto</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Configurar proxy global en linux</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.png" alt="Yuniel Acosta Pérez" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Yuniel Acosta Pérez</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        
+        Desarrollador de aplicaciones de escritorio, web y móviles. Entusiasta de la tecnología. Más de 3 años de experiencia en la industria del software.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Ciego de Ávila</span>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:yunielacosta738@gmail.com">
+            <meta itemprop="email" content="yunielacosta738@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/yacosta738" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Configurar proxy global en linux">
+    <meta itemprop="description" content="En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux">
+    <meta itemprop="datePublished" content="December 08, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Configurar proxy global en linux
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2020-12-08T00:00:00-05:00">December 08, 2020 </time>&emsp;
+          
+          
+        </p>
+        <p><img src="/assets/images/proxy-global/portada-proxy.jpg" alt="" /></p>
+
+<p>En sistemas operativos GNU/Linux cuando nos encontramos detrás de un servidor proxy, puede volverse un poco engorroso 
+utilizar programas que no tengan configuración propia para proxy o comandos como apt-get, o simplemente lo queremos 
+configurar de forma global. Muchos de las distribuciones GNU/Linux usan diferentes manejadores de paquetes los cuales 
+se configuran de formas distintas, además existen muchos programas que necesitan sus especificaciones para configurar
+la salida a Internet a través de un servidor proxy. Todo este proceso se vuelve muy engorroso de hacer en ambientes 
+donde uses un proxy con autenticación y está cambien cada cierto tiempo o que uses una laptop donde constantemente 
+puedes conectarte a redes donde no se use proxy. Imaginen cambiar toda la configuración cada vez que cambies de red.</p>
+
+<p align="center">
+<img src="/assets/images/proxy-global/proxy-schema.png" />
+</p>
+
+<p>A continuación les dejo algunos ejemplos de como configurar proxy en algunas distros GNU/Linux</p>
+
+<p align="center">
+<img src="/assets/images/proxy-global/proxy-global.jpg" />
+</p>
+
+<h2 id="configurar-proxy-en-la-terminal-de-forma-temporal">Configurar proxy en la terminal de forma temporal</h2>
+<p>Si queremos usar un proxy de manera puntual, podemos realizar el siguiente paso:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export http_proxy=http://username:password@proxyserver:puerto
+export https_proxy=$http_proxy
+</code></pre></div></div>
+
+<h2 id="configuración-de-variables-de-entorno-para-distribuciones-de-la-familia-debianubuntu">Configuración de variables de entorno para distribuciones de la familia Debian|Ubuntu:</h2>
+<p>Editar el fichero <code class="language-plaintext highlighter-rouge">/etc/environment</code> con tu editor de texto preferido.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vim /etc/environment
+</code></pre></div></div>
+
+<p>Agregamos las siguientes líneas al archivo, debes duplicarlas en mayúscula y minúscula porque(desafortunadamente) algunos programas solo buscan una o la otra:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http_proxy http://username:password@proxyserver:puerto
+https_proxy http://username:password@proxyserver:puerto
+ftp_proxy http://username:password@proxyserver:puerto
+no_proxy localhost,127.0.0.1,localaddress,.localdomain.com
+#Duplicadas en mayúsculas
+HTTP_PROXY http://username:password@proxyserver:puerto
+HTTPS_PROXY http://username:password@proxyserver:puerto
+FTP_PROXY http://username:password@proxyserver:puerto
+NO_PROXY localhost,127.0.0.1,localaddress,.localdomain.com
+</code></pre></div></div>
+
+<h2 id="configuración-de-variables-de-entorno-para-distribuciones-de-la-familia-redhatfedoracentos">Configuración de variables de entorno para distribuciones de la familia RedHat|Fedora|Centos:</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vim /etc/profile.d/proxy.sh
+</code></pre></div></div>
+
+<p>Modificamos los parámetros necesarios</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export http_proxy="http://username:password@proxyserver:puerto/"
+export https_proxy="http://username:password@proxyserver:puerto/"
+export ftp_proxy="http://username:password@proxyserver:puerto/"
+</code></pre></div></div>
+
+<h2 id="configuración-de-proxy-para-apt-get-apt-aptitude">Configuración de proxy para apt-get, apt, aptitude:</h2>
+<p>Creamos o editamos archivo <code class="language-plaintext highlighter-rouge">/etc/apt/apt.conf</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vim /etc/apt/apt.conf
+</code></pre></div></div>
+
+<p>Agregamos las siguientes líneas:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Acquire::http::Proxy "http://username:password@proxyserver:puerto";
+Acquire::https::Proxy "http://username:password@proxyserver:puerto";
+Acquire::ftp::Proxy "http://username:password@proxyserver:puerto";
+#En caso de tener un repo local para el que no necesitemos proxy
+Acquire::http::Proxy {
+repositorio.localdomain.com DIRECT;
+repositorio2.localdomain.com DIRECT;
+};
+</code></pre></div></div>
+
+<h2 id="configuración-de-proxy-para-yum">Configuración de proxy para yum:</h2>
+<p>Editamos el archivo <code class="language-plaintext highlighter-rouge">/etc/yum.conf</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Indicamos dirección más puerto del proxy
+proxy=http://proxyserver:puerto
+# Si el proxy funciona con usuario y contraseña
+proxy_username=usuario
+proxy_password=contraseña
+</code></pre></div></div>
+
+<h2 id="configuración-de-proxy-para-pacman">Configuración de proxy para pacman:</h2>
+<p>Editamos el fichero /etc/pacman.conf y debemos descomentar <code class="language-plaintext highlighter-rouge">XferCommand</code> de la siguiente manera:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+</code></pre></div></div>
+
+<p align="center">
+<img src="/assets/images/proxy-global/pacman.conf.png" />
+</p>
+
+<p>Guardamos los cambios y procedemos a editar el fichero de configuración para <code class="language-plaintext highlighter-rouge">wget</code>, herramienta utilizada para la 
+descarga de paquetes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vim /etc/wgetrc
+</code></pre></div></div>
+
+<p>Editamos el archivo de configuración <code class="language-plaintext highlighter-rouge">/etc/wgetrc</code> buscamos las siguientes líneas y las descomentamos o agregamos al final del archivo.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https_proxy = http://username:password@proxyserver:puerto
+http_proxy = http://username:password@proxyserver:puerto
+ftp_proxy = http://username:password@proxyserver:puerto
+use_proxy = on
+</code></pre></div></div>
+
+<h2 id="configuración-de-proxy-para-nodejsnpm">Configuración de proxy para nodejs(npm)</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm config set proxy http://username:password@proxyserver:puerto
+npm config set https-proxy http://username:password@proxyserver:puerto
+</code></pre></div></div>
+
+<h2 id="configurar-proxy-para-git">Configurar proxy para git</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global http.proxy http//proxyserver:puerto
+git config --global https.proxy https//proxyserver:puerto
+##En caso de tener conexión directa y necesitemos quitarle la configuración de proxy a git
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre></div></div>
+
+<p>Como se puede apreciar es muy complejo mantener constantemente la configuración de un proxy en tu pc, pero por suerte existen 
+otras opciones que te permiten configurar un proxy de forma global a todo el sistema operativo. En sistemas como Windows o MacOS 
+existen herramientas como Proxifier, ProxyCap entre otras que facilitan la salida a internet a través de un proxy por otra parte 
+sistemas operativos GNU/Linux tenemos alternativas a estos programas como las que listo a continuación.</p>
+
+<h1 id="redsock">Redsock</h1>
+
+<p><a href="https://github.com/darkk/redsocks">Redsock</a> es una herramienta que permite redirigir cualquier conexión TCP a SOCKS o proxy 
+HTTPS usando su firewall, por lo que la redirección puede ser en todo el sistema o en toda la red. Esta herramienta es muy
+útil porque nos permite con un solo archivo de configuración poder usar la conexión a través del proxy en todo el sistema 
+operativo.</p>
+
+<h2 id="paquetes-para-las-distintas-distribuciones-linux">Paquetes para las distintas distribuciones linux</h2>
+
+<hr />
+<ul>
+  <li>Archlinux/Manjaro: <a href="https://aur.archlinux.org/packages/redsocks-git">https://aur.archlinux.org/packages/redsocks-git</a></li>
+  <li>Debian:<a href="http://packages.debian.org/search?searchon=names&amp;keywords=redsocks"> http://packages.debian.org/search?searchon=names&amp;keywords=redsocks</a></li>
+  <li>Gentoo (zugaina overlay):<a href="http://gpo.zugaina.org/net-proxy/redsocks">http://gpo.zugaina.org/net-proxy/redsocks</a></li>
+  <li>Gentoo: <a href="https://packages.gentoo.org/packages/net-proxy/redsocks">https://packages.gentoo.org/packages/net-proxy/redsocks</a></li>
+  <li>Ubuntu: <a href="http://packages.ubuntu.com/search?searchon=names&amp;keywords=redsocks">http://packages.ubuntu.com/search?searchon=names&amp;keywords=redsocks</a></li>
+</ul>
+
+<h2 id="compilación-manual-de-redsock">Compilación manual de redsock</h2>
+<p>Para compilar redsock necesitamos clonar su repositorio en GitHub https://github.com/darkk/redsocks y seguir las instrucciones 
+en el README.md. Es necesario que en nuestro sistema esté instalado <strong><a href="http://libevent.org/">libevent-2.0.x</a></strong>, al igual que los
+compiladores <code class="language-plaintext highlighter-rouge">gcc</code> y <code class="language-plaintext highlighter-rouge">clang</code>. La compilación es tan fácil como ejecutar <code class="language-plaintext highlighter-rouge">make</code> en el directorio raíz del proyecto.</p>
+
+<h2 id="ejecutar-redsock">Ejecutar redsock</h2>
+<p>Ejecutar redsock depende mucho de la distribución que estés usando y de la forma en la que el paquete instaló redsock. El programa
+tiene las siguientes opciones de línea de comando:</p>
+
+<ul>
+  <li>-c especifica el camino al archivo de configuración (<code class="language-plaintext highlighter-rouge">./redsocks.conf</code> es el usado por defecto)</li>
+  <li>-t esta opción verifica la sintaxis del archivo de configuración</li>
+  <li>-p establece un archivo para escribir el <code class="language-plaintext highlighter-rouge">getpid()</code> donde se especifican las siguientes señales: <code class="language-plaintext highlighter-rouge">SIGUSR1</code> vuelca la lista 
+de clientes conectados al registro, <code class="language-plaintext highlighter-rouge">SIGTERM</code> y <code class="language-plaintext highlighter-rouge">SIGINT</code> terminan el demonio, se cierran todas las conexiones activas.</li>
+</ul>
+
+<p>Puedes ver un ejemplo del archivo de configuración en <a href="https://github.com/darkk/redsocks/blob/master/redsocks.conf.example">redsocks.conf.example</a>.</p>
+
+<h3 id="ejemplo-de-iptables">Ejemplo de iptables</h3>
+<p>Tienes que construir iptables con seguimiento de conexión y objetivo <code class="language-plaintext highlighter-rouge">REDIRECT</code>.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # Create new chain
+  root# iptables -t nat -N REDSOCKS
+  
+  # Ignore LANs and some other reserved addresses.
+  # See http://en.wikipedia.org/wiki/Reserved_IP_addresses#Reserved_IPv4_addresses
+  # and http://tools.ietf.org/html/rfc5735 for full list of reserved networks.
+  root# iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 100.64.0.0/10 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 198.18.0.0/15 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
+  
+  # Anything else should be redirected to port 12345
+  root# iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 12345
+  
+  # Any tcp connection made by `luser' should be redirected.
+  root# iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner luser -j REDSOCKS
+  
+  # You can also control that in more precise way using `gid-owner` from
+  # iptables.
+  root# groupadd socksified
+  root# usermod --append --groups socksified luser
+  root# iptables -t nat -A OUTPUT -p tcp -m owner --gid-owner socksified -j REDSOCKS
+  
+  # Now you can launch your specific application with GID `socksified` and it
+  # will be... socksified. See following commands (numbers may vary).
+  # Note: you may have to relogin to apply `usermod` changes.
+  luser$ id
+  uid=1000(luser) gid=1000(luser) groups=1000(luser),1001(socksified)
+  luser$ sg socksified -c id
+  uid=1000(luser) gid=1001(socksified) groups=1000(luser),1001(socksified)
+  luser$ sg socksified -c "firefox"
+  
+  # If you want to configure socksifying router, you should look at
+  # doc/iptables-packet-flow.png, doc/iptables-packet-flow-ng.png and
+  # https://en.wikipedia.org/wiki/File:Netfilter-packet-flow.svg
+  # Note, you should have proper `local_ip' value to get external packets with
+  # redsocks, default 127.0.0.1 will not go. See iptables(8) manpage regarding
+  # REDIRECT target for details.
+  # Depending on your network configuration iptables conf. may be as easy as:
+  root# iptables -t nat -A PREROUTING --in-interface eth_int -p tcp -j REDSOCKS
+</code></pre></div></div>
+
+<p>Redsock es una de mis herramientas favoritas para configurar todo mi tráfico a internet a través de un proxy usando el protocolo TCP.
+A continuación les muestro otra alternativa más reciente que resulta muy interesante y de fácil configuración.</p>
+
+<h1 id="proxifier-for-linux">Proxifier-For-Linux</h1>
+<p>Proxifier-For-Linux es una herramienta que actúa como un intermediario entre el servidor proxy y los programas clientes que necesiten
+acceso a internet. Proxifier trabaja a través de los servidores proxy en nombre de los otros programas. Proxifier actúa como un punto 
+global para configurar las reglas de proxy, que se aplicarán a todos los programas del sistema. Como mencioné anteriormente es un proyecto
+nuevo por lo que actualmente solo tiene soporte para proxies http.</p>
+
+<p>Como se explica en el repositorio oficial de <a href="https://github.com/m0hithreddy/Proxifier-For-Linux">Proxifier-for-linux</a> nuestro sistema
+operativo debe contar con las siguientes dependencias</p>
+
+<h2 id="dependencias">Dependencias</h2>
+<p>A continuación se muestra la lista de dependencias requeridas para compilar y ejecutar Proxifier, asi como la posible instalación
+en dependencia del sistema operativo que uses.</p>
+
+<h3 id="instalar-las-dependencias">Instalar las dependencias</h3>
+<p>Para comprobar si tienes ya las dependencias instaladas puedes usar el comando <code class="language-plaintext highlighter-rouge">which &lt;nombre del paquete&gt;</code>. Ejemplo <code class="language-plaintext highlighter-rouge">which autoconf</code>
+y si te devuelve la ruta es que ya esa dependencia está instalada</p>
+<ul>
+  <li><a href="https://github.com/autotools-mirror/autoconf">autoconf</a> [$ sudo apt install autoconf]</li>
+  <li><a href="https://github.com/autotools-mirror/automake">automake</a> [$ sudo apt install automake]</li>
+  <li><a href="https://github.com/autotools-mirror/libtool">libtool</a> [$ sudo apt install libtool]</li>
+  <li><a href="https://github.com/mvertes/txt2man">txt2man</a> [$ sudo apt install txt2man]</li>
+</ul>
+
+<h2 id="descargar-proxifier">Descargar Proxifier</h2>
+<p>Obtén la última versión estable de Proxifier clonando el repositorio de GitHub.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/m0hithreddy/Proxifier-For-Linux.git &amp;&amp; cd Proxifier-For-Linux
+</code></pre></div></div>
+
+<h2 id="construir-e-instalar">Construir e Instalar</h2>
+<p>Después de instalar todas las dependencias, obtén el código fuente de Proxifier y dentro del directorio donde está el código ejecuta
+los siguientes comandos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ autoreconf -vfi
+$ ./configure
+$ make all
+$ sudo make uninstall
+$ sudo make install
+</code></pre></div></div>
+
+<h2 id="como-usar-proxifier">Como usar Proxifier</h2>
+<p>El servicio de Proxifier se puede habilitar ejecutando el comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl daemon-reload # Reload the service units
+$ sudo systemctl start proxifier
+</code></pre></div></div>
+
+<p>Para más información de Proxifier puedes consultar la ayuda ejecutando el comando <code class="language-plaintext highlighter-rouge">$ man proxifier</code>. El archivo de configuración
+se puede encontrar en la ruta <code class="language-plaintext highlighter-rouge">/usr/local/etc/proxifier.conf</code> donde puedes especificar la configuración de tu proxy.</p>
+
+<p>La siguiente herramienta que te quiero mostrar es Proxychains</p>
+
+<h1 id="proxychains">Proxychains</h1>
+<p><a href="https://github.com/haad/proxychains">Proxychains-ng</a> es un servidor proxy que soporta los protocolos de internet HTTPs, SOCKS4 y SOCKS5 y funciona
+en plataformas basadas en Unix. Permite que cualquier conexión TCP hecha por un programa siga una serie de proxies(de los protocolos antes mencionados)
+hasta su destino. La lista de proxies así como la estrategia de selección de los proxies se definen con anterioridad.</p>
+
+<h2 id="instalar-proxychains">Instalar proxychains</h2>
+<p>Proxychains está disponible con <a href="https://github.com/haad/proxychains/blob/master/www.pkgsrc.org">pkgsrc</a> para todos los que 
+lo usen en Linux, NetBSD, FreeBSD, OpenBSD, DragonFlyBSD o Mac OS X. Solo necesita instalar  <a href="http://pkgsrc-wip.sourceforge.net/">pkgsrc-wip</a> 
+y ejecutar <code class="language-plaintext highlighter-rouge">make install</code> en un el directorio <code class="language-plaintext highlighter-rouge">wip/proxychains</code></p>
+
+<h3 id="instalar-proxychains-desde-el-código-fuente">Instalar proxychains desde el código fuente</h3>
+
+<p>Clonar el código fuente de GitHub y ejecutar los siguientes comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/haad/proxychains.git &amp;&amp; cd proxychains
+# se necesita un compilador de C, preferiblemente gcc
+./configure
+make
+sudo make install
+</code></pre></div></div>
+
+<h3 id="paquetes-para-las-distintas-distribuciones-linux-1">Paquetes para las distintas distribuciones linux</h3>
+
+<hr />
+<ul>
+  <li>Archlinux/Manjaro: <a href="https://www.archlinux.org/packages/community/x86_64/proxychains-ng/">https://www.archlinux.org/packages/community/x86_64/proxychains-ng/</a></li>
+  <li>Debian: <a href="https://packages.debian.org/search?keywords=proxychains">https://packages.debian.org/search?keywords=proxychains</a></li>
+  <li>Gentoo: <a href="https://packages.gentoo.org/packages/net-proxy/proxychains">https://packages.gentoo.org/packages/net-proxy/proxychains</a></li>
+  <li>Fedora: <a href="https://fedora.pkgs.org/32/fedora-x86_64/proxychains-ng-4.13-5.fc32.x86_64.rpm.html">https://fedora.pkgs.org/32/fedora-x86_64/proxychains-ng-4.13-5.fc32.x86_64.rpm.html</a></li>
+  <li>Ubuntu: <a href="http://packages.ubuntu.com/search?searchon=names&amp;keywords=proxychains">http://packages.ubuntu.com/search?searchon=names&amp;keywords=proxychains</a></li>
+</ul>
+
+<h2 id="configuración">Configuración</h2>
+<p>Proxychains busca la configuración en el siguiente orden:</p>
+
+<ul>
+  <li>
+    <p>Puerto proxy SOCKS5 en la variable de entorno $ {PROXYCHAINS_SOCKS5} (si se establece, no se buscarán más configuraciones)</p>
+  </li>
+  <li>
+    <p>Archivo listado en la variable de entorno $ {PROXYCHAINS_CONF_FILE} o proporcionado como un argumento -f para el script o binario de proxychains.</p>
+  </li>
+  <li>
+    <p>./proxychains.conf</p>
+  </li>
+  <li>
+    <p>$(HOME)/.proxychains/proxychains.conf</p>
+  </li>
+  <li>
+    <p>/etc/proxychains.conf</p>
+  </li>
+</ul>
+
+<p>Ver más de la configuración en el archivo <code class="language-plaintext highlighter-rouge">/etc/proxychains.conf</code></p>
+<h3 id="ejemplo-de-como-configurar-varios-proxies">Ejemplo de como configurar varios proxies</h3>
+
+<p>Al final del fichero <code class="language-plaintext highlighter-rouge">/etc/proxychains.conf</code> se encuentra la lista donde podemos agregar nuestros proxies. Las estrategias de
+selección de proxies varían entre <code class="language-plaintext highlighter-rouge">dynamic_chain, strict_chain, round_robin_chain, random_chain</code> y solo uno puede estar 
+descomentado.</p>
+
+<ul>
+  <li>
+    <p>dynamic_chain: Dinámico: cada conexión se realizará a través de proxies encadenados, todos los proxies encadenados en el orden en que aparecen en la lista, al menos un proxy debe estar en línea para jugar en cadena (se omiten los proxies muertos) de lo contrario, EINTR se devuelve a la aplicación</p>
+  </li>
+  <li>
+    <p>strict_chain: Estricto: cada conexión se realizará a través de proxies encadenados, todos los proxies encadenados en el orden en que aparecen en la lista, todos los proxies deben estar en línea para jugar en cadena; de lo contrario, EINTR se devuelve a la aplicación</p>
+  </li>
+  <li>
+    <p>round_robin_chain: Round Robin: cada conexión se realizará a través de proxies encadenados de longitud <code class="language-plaintext highlighter-rouge">chain_len</code>, todos los proxies encadenados en el orden en que aparecen en la lista, al menos un proxy debe estar en línea para jugar en cadena (se omiten los proxies muertos). el inicio de la cadena de proxy actual es el proxy después del último proxy en la cadena de proxy invocada anteriormente. Si se alcanza el final de la cadena de proxy mientras se buscan proxies, comience de nuevo desde el principio. De lo contrario, EINTR se devuelve a la aplicación. Esta semántica no está garantizada en un entorno multiproceso.</p>
+  </li>
+  <li>
+    <p>random_chain: Aleatorio: cada conexión se realizará mediante un proxy aleatorio (o una cadena de proxy, consulte <code class="language-plaintext highlighter-rouge">chain_len</code>) de la lista.</p>
+
+    <p>[ProxyList]
+  # add proxy here …
+  # meanwile
+  # defaults set to “tor”
+  socks4  127.0.0.1 9050
+  #psiphon proxy
+  http 127.0.0.1 52525
+  socks5 127.0.0.1 42552
+  #Otro Proxy 
+  http 192.168.1.11 8080 user password
+  #Mobile proxy
+  http 192.168.44.244 3128 user password</p>
+  </li>
+</ul>
+
+<h2 id="ejemplos-de-uso">Ejemplos de uso</h2>
+
+<p>Ejecutar <code class="language-plaintext highlighter-rouge">proxychains &lt;programa a ejecutar a través de un proxy&gt;</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ proxychains telnet targethost.com
+</code></pre></div></div>
+
+<p>En este ejemplo se ejecuta el programa <strong>telnet</strong> a través de un proxy ( o una cadena de proxies ) especificada por proxychains.con
+in this example it will run telnet through proxy(or chained proxies) specified by proxychains.conf</p>
+
+<p>Proxychains nos da una gran ventaja al poder encadenar muchos proxies a la vez lo que se usa mucho en ciberseguridad para ocultar
+la identidad de las peticiones realizadas. Una de las desventajas que tiene proxychains es que se ejecuta en la consola lo cual 
+resulta incómodo cuando usamos programas con interfaz gráfica.</p>
+
+<p>El siguiente en la lista es uno de mis favoritos pues es una VPN que permite configurar un proxy global para todo el 
+sistema operativo así como montar un firewall en la pc.</p>
+
+<h1 id="windscribe">Windscribe</h1>
+
+<p><a href="https://windscribe.com/?friend=abhyp2zr">Windscribe</a> es un conjunto de herramientas que permiten bloquear los seguidores de anuncios y los beacons web, 
+restaurar el acceso a contenido bloqueado y ayudarle a proteger su privacidad en línea. Hay dos componentes: 
+la aplicación de escritorio VPN (Windows, MacOS y Linux) y la extensión del navegador (Chrome, Edge, Firefox, Safari, …)</p>
+
+<p>La aplicación de escritorio es un cliente VPN (Virtual Private Network). Crea un túnel encriptado desde tu computadora a 
+los servidores de <a href="https://windscribe.com/?affid=abhyp2zr">winscribe</a>, y toda tu actividad se envía a través del túnel. Esto tiene dos ventajas:</p>
+
+<ol>
+  <li>La dirección IP de su proveedor de servicios de Internet (ISP) está enmascarada, por lo que cualquier sitio web que visite 
+o cualquier aplicación que utilice (Skype, proveedores de correo electrónico, BitTorrent, etc.) verá nuestra
+dirección IP compartida por miles de personas.</li>
+  <li>Su proveedor de servicios de Internet no puede ver lo que hace en línea. Esto es mucho más importante de lo que piensas.</li>
+</ol>
+
+<p>Lo primero que se tiene que hacer es crear una cuenta en <a href="https://windscribe.com/?friend=abhyp2zr">Windscribe</a> registrándose 
+<a href="https://windscribe.com/?friend=abhyp2zr">aquí</a>. Windscribe nos da 2GB de consumo mensual gratis, pero si confirmamos nuestro
+correo electrónico este aumenta 5GB, además puedes aumentar hasta 15GB mensuales si creas un post en twitter dando en el botón
+<em><strong>Tweet4Data</strong></em> en la configuración de tu cuenta.</p>
+<p align="center">
+<img src="/assets/images/proxy-global/more-data.png" />
+</p>
+
+<h2 id="instalar-windscribe">Instalar Windscribe</h2>
+<p>Después de registrarse se descarga el cliente de escritorio o la extensión para su navegador favorito 
+en la sesión de <a href="https://windscribe.com/?friend=abhyp2zr">Descargas</a>. Seguir las instrucciones del enlace de descarga
+en dependencia del sistema operativo que uses.</p>
+
+<h2 id="configuración-del-cliente-de-windscribe-para-linux">Configuración del cliente de Windscribe para Linux</h2>
+<p>Lo primero que tenemos que hacer es arrancar el servicio de windscribe para ello ejecutamos el comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start windscribe
+</code></pre></div></div>
+
+<p>Una vez este corriendo el servicio de windscribe debemos configurar el proxy ejecutando el comando
+<code class="language-plaintext highlighter-rouge">windscribe proxy --host &lt;direccion del proxy&gt; --port &lt;puerto&gt; --user &lt;usuario&gt; --password &lt;contraseña&gt;</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>windscribe proxy --host 19.18.4.54 --port 3128 --user acosta --password "super password"
+windscribe proxy on
+</code></pre></div></div>
+
+<p>Con los comandos anteriores configuramos y activamos windscribe para que use nuestro proxy. Ahora cuando para conectar toda las 
+aplicaciones salgan a internet a través de Windscribe ejecutamos el comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>windscribe connect best # Nos conecta al servidor de windscribe con mejor rendimiento
+</code></pre></div></div>
+
+<p>Para consultar la ayuda de windscribe podemos ejecutar el comando <code class="language-plaintext highlighter-rouge">windscribe --help</code></p>
+
+<p align="center">
+<img src="/assets/images/proxy-global/windscribe-help.png" />
+</p>
+
+<p>Estas son algunas de las opciones que existen para configurar la salida a internet a través de un proxy en sistemas operativos GNU-Linux.
+De todas las variantes mostradas en este artículo mi favorita sin dudas es windscribe por todas las facilidades que ofrece.
+Espero que les sirva de ayuda en caso que quieran tener configurado de forma global un proxy en linux.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#global-proxy" class="page__taxonomy-item" rel="tag">Global Proxy</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#linux" class="page__taxonomy-item" rel="tag">Linux</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#proxifier" class="page__taxonomy-item" rel="tag">Proxifier</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#proxy" class="page__taxonomy-item" rel="tag">Proxy</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#proxychains" class="page__taxonomy-item" rel="tag">Proxychains</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#redsock" class="page__taxonomy-item" rel="tag">Redsock</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#vpn" class="page__taxonomy-item" rel="tag">VPN</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#windscribe" class="page__taxonomy-item" rel="tag">Windscribe</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#configuraci%C3%B3n" class="page__taxonomy-item" rel="tag">Configuración</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#linux" class="page__taxonomy-item" rel="tag">Linux</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#proxy" class="page__taxonomy-item" rel="tag">Proxy</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#utilidades" class="page__taxonomy-item" rel="tag">Utilidades</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2020-12-08T00:00:00-05:00">December 08, 2020</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/antena-casera-largo-alcance/" class="pagination--pager" title="Creando una antena casera direccional de largo alcance
+">Previous</a>
+    
+    
+      <a href="/agregar-selector-imagen-flutter/" class="pagination--pager" title="Agregar un selector de imágenes a una aplicación hecha en Flutter
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Nómada Digital</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

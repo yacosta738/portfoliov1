@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-18T09:40:04-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry><title type="html">Agregar un selector de imágenes a una aplicación hecha en Flutter</title><link href="http://localhost:4000/agregar-selector-imagen-flutter/" rel="alternate" type="text/html" title="Agregar un selector de imágenes a una aplicación hecha en Flutter" /><published>2020-12-18T00:00:00-05:00</published><updated>2020-12-18T00:00:00-05:00</updated><id>http://localhost:4000/agregar-selector-imagen-flutter</id><content type="html" xml:base="http://localhost:4000/agregar-selector-imagen-flutter/">&lt;p&gt;&lt;img src=&quot;/assets/images/flutter-selector-imagen/portada.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;El selector de imágenes es un componente común que a menudo se necesita para cambiar las fotos de los perfiles de
+usuario entre muchas otras opciones donde es necesario subir una imagen. Con el fin de proveer a nuestra aplicación de
+la opción de subir imágenes seleccionadas desde nuestro dispositivo, ya sea en la cámara o la galería, usaremos
+el &lt;a href=&quot;https://pub.dev/packages/image_picker&quot;&gt;complemento&lt;/a&gt; hecho por desarrolladores de Flutter.&lt;/p&gt;
+
+&lt;h2 id=&quot;paso-1-agregar-la-dependencia-a-su-archivo-pubspecyaml&quot;&gt;&lt;strong&gt;Paso 1&lt;/strong&gt;: Agregar la dependencia a su archivo &lt;strong&gt;&lt;em&gt;pubspec.yaml&lt;/em&gt;&lt;/strong&gt;.&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;image_picker: ^0.6.7+14
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;paso-2-configurar-las-plataformas-nativas&quot;&gt;&lt;strong&gt;Paso 2&lt;/strong&gt;: Configurar las plataformas nativas&lt;/h2&gt;
+
+&lt;p&gt;A continuación, necesitamos configurar los ajustes nativos. Para la plataforma Android, no se necesita configurar nada.
+Para iOS, abra el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Info.plist&lt;/code&gt; que se encuentra en la carpeta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ios/Runner&lt;/code&gt; y agregue las siguientes claves.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;key&amp;gt;NSPhotoLibraryUsageDescription&amp;lt;/key&amp;gt;
+&amp;lt;string&amp;gt;Allow access to photo library&amp;lt;/string&amp;gt;
+
+&amp;lt;key&amp;gt;NSCameraUsageDescription&amp;lt;/key&amp;gt;
+&amp;lt;string&amp;gt;Allow access to camera to capture photos&amp;lt;/string&amp;gt;
+
+&amp;lt;key&amp;gt;NSMicrophoneUsageDescription&amp;lt;/key&amp;gt;
+&amp;lt;string&amp;gt;Allow access to microphone&amp;lt;/string&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;paso-3-función-de-selector-de-imágenes&quot;&gt;&lt;strong&gt;Paso 3&lt;/strong&gt;: Función de selector de imágenes&lt;/h2&gt;
+
+&lt;p&gt;En la clase &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;State&lt;/code&gt; de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt; de nuestra pantalla, declare una variable de tipo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;File&lt;/code&gt; para contener la imagen
+elegida por el usuario.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;File _image;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ahora escriba dos funciones para seleccionar imágenes a través de la cámara y la galería de fotos, respectivamente. El
+parámetro opcional &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;imageQuality&lt;/code&gt; acepta cualquier valor entre 0 y 100, este parámetro se puede ajustar según el tamaño
+y la calidad que requiera la aplicación. Después de obtener el archivo de imagen, lo guardamos en la variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_image&lt;/code&gt; y
+llamamos a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setState ()&lt;/code&gt; para que se pueda mostrar en la pantalla.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50
+    );
+  
+    setState(() {
+      _image = image;
+    });
+  }
+  
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50
+    );
+  
+    setState(() {
+      _image = image;
+    });
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;paso-4-crear-un-selector-de-opciones-para-seleccionar-la-cámara-o-la-galería&quot;&gt;&lt;strong&gt;Paso 4&lt;/strong&gt;: Crear un selector de opciones para seleccionar la cámara o la galería&lt;/h2&gt;
+
+&lt;p&gt;A continuación, se observa la función para mostrar un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bottom sheet&lt;/code&gt; para que el usuario elija la opción de cámara o
+galería.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void _showPicker(context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Container(
+            child: new Wrap(
+              children: &amp;lt;Widget&amp;gt;[
+                new ListTile(
+                    leading: new Icon(Icons.photo_library),
+                    title: new Text('Photo Library'),
+                    onTap: () {
+                      _imgFromGallery();
+                      Navigator.of(context).pop();
+                    }),
+                new ListTile(
+                  leading: new Icon(Icons.photo_camera),
+                  title: new Text('Camera'),
+                  onTap: () {
+                    _imgFromCamera();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;paso-5-crear-y-configurar-la-vista-de-imagen-en-pantalla&quot;&gt;&lt;strong&gt;Paso 5&lt;/strong&gt;: Crear y configurar la vista de imagen en pantalla&lt;/h2&gt;
+&lt;p&gt;Finalmente, creemos un soporte de imagen de perfil en la pantalla, que abre el selector al hacer clic y muestra la imagen seleccionada.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(),
+    body: Column(
+      children: &amp;lt;Widget&amp;gt;[
+        SizedBox(
+          height: 32,
+        ),
+        Center(
+          child: GestureDetector(
+            onTap: () {
+              _showPicker(context);
+            },
+            child: CircleAvatar(
+              radius: 55,
+              backgroundColor: Color(0xffFDCF09),
+              child: _image != null
+                  ? ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.file(
+                  _image,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                ),
+              )
+                  : Container(
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(50)),
+                width: 100,
+                height: 100,
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.grey[800],
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Listo, ejecute la aplicación y debería ver algo como esto.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/flutter-selector-imagen/resultado.gif&quot; /&gt;
+&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Flutter" /><category term="Android" /><category term="iOS" /><category term="Cámara" /><category term="Galería de Imágenes" /><summary type="html">En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos</summary></entry><entry><title type="html">Configurar proxy global en linux</title><link href="http://localhost:4000/configurar-proxy-global-en-linux/" rel="alternate" type="text/html" title="Configurar proxy global en linux" /><published>2020-12-08T00:00:00-05:00</published><updated>2020-12-08T00:00:00-05:00</updated><id>http://localhost:4000/configurar-proxy-global-en-linux</id><content type="html" xml:base="http://localhost:4000/configurar-proxy-global-en-linux/">&lt;p&gt;&lt;img src=&quot;/assets/images/proxy-global/portada-proxy.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;En sistemas operativos GNU/Linux cuando nos encontramos detrás de un servidor proxy, puede volverse un poco engorroso 
+utilizar programas que no tengan configuración propia para proxy o comandos como apt-get, o simplemente lo queremos 
+configurar de forma global. Muchos de las distribuciones GNU/Linux usan diferentes manejadores de paquetes los cuales 
+se configuran de formas distintas, además existen muchos programas que necesitan sus especificaciones para configurar
+la salida a Internet a través de un servidor proxy. Todo este proceso se vuelve muy engorroso de hacer en ambientes 
+donde uses un proxy con autenticación y está cambien cada cierto tiempo o que uses una laptop donde constantemente 
+puedes conectarte a redes donde no se use proxy. Imaginen cambiar toda la configuración cada vez que cambies de red.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proxy-global/proxy-schema.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;A continuación les dejo algunos ejemplos de como configurar proxy en algunas distros GNU/Linux&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proxy-global/proxy-global.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&quot;configurar-proxy-en-la-terminal-de-forma-temporal&quot;&gt;Configurar proxy en la terminal de forma temporal&lt;/h2&gt;
+&lt;p&gt;Si queremos usar un proxy de manera puntual, podemos realizar el siguiente paso:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export http_proxy=http://username:password@proxyserver:puerto
+export https_proxy=$http_proxy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-variables-de-entorno-para-distribuciones-de-la-familia-debianubuntu&quot;&gt;Configuración de variables de entorno para distribuciones de la familia Debian|Ubuntu:&lt;/h2&gt;
+&lt;p&gt;Editar el fichero &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/environment&lt;/code&gt; con tu editor de texto preferido.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vim /etc/environment
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agregamos las siguientes líneas al archivo, debes duplicarlas en mayúscula y minúscula porque(desafortunadamente) algunos programas solo buscan una o la otra:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http_proxy http://username:password@proxyserver:puerto
+https_proxy http://username:password@proxyserver:puerto
+ftp_proxy http://username:password@proxyserver:puerto
+no_proxy localhost,127.0.0.1,localaddress,.localdomain.com
+#Duplicadas en mayúsculas
+HTTP_PROXY http://username:password@proxyserver:puerto
+HTTPS_PROXY http://username:password@proxyserver:puerto
+FTP_PROXY http://username:password@proxyserver:puerto
+NO_PROXY localhost,127.0.0.1,localaddress,.localdomain.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-variables-de-entorno-para-distribuciones-de-la-familia-redhatfedoracentos&quot;&gt;Configuración de variables de entorno para distribuciones de la familia RedHat|Fedora|Centos:&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vim /etc/profile.d/proxy.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Modificamos los parámetros necesarios&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export http_proxy=&quot;http://username:password@proxyserver:puerto/&quot;
+export https_proxy=&quot;http://username:password@proxyserver:puerto/&quot;
+export ftp_proxy=&quot;http://username:password@proxyserver:puerto/&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-proxy-para-apt-get-apt-aptitude&quot;&gt;Configuración de proxy para apt-get, apt, aptitude:&lt;/h2&gt;
+&lt;p&gt;Creamos o editamos archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/apt/apt.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vim /etc/apt/apt.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agregamos las siguientes líneas:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Acquire::http::Proxy &quot;http://username:password@proxyserver:puerto&quot;;
+Acquire::https::Proxy &quot;http://username:password@proxyserver:puerto&quot;;
+Acquire::ftp::Proxy &quot;http://username:password@proxyserver:puerto&quot;;
+#En caso de tener un repo local para el que no necesitemos proxy
+Acquire::http::Proxy {
+repositorio.localdomain.com DIRECT;
+repositorio2.localdomain.com DIRECT;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-proxy-para-yum&quot;&gt;Configuración de proxy para yum:&lt;/h2&gt;
+&lt;p&gt;Editamos el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/yum.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Indicamos dirección más puerto del proxy
+proxy=http://proxyserver:puerto
+# Si el proxy funciona con usuario y contraseña
+proxy_username=usuario
+proxy_password=contraseña
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-proxy-para-pacman&quot;&gt;Configuración de proxy para pacman:&lt;/h2&gt;
+&lt;p&gt;Editamos el fichero /etc/pacman.conf y debemos descomentar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XferCommand&lt;/code&gt; de la siguiente manera:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proxy-global/pacman.conf.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Guardamos los cambios y procedemos a editar el fichero de configuración para &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget&lt;/code&gt;, herramienta utilizada para la 
+descarga de paquetes.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vim /etc/wgetrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Editamos el archivo de configuración &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/wgetrc&lt;/code&gt; buscamos las siguientes líneas y las descomentamos o agregamos al final del archivo.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https_proxy = http://username:password@proxyserver:puerto
+http_proxy = http://username:password@proxyserver:puerto
+ftp_proxy = http://username:password@proxyserver:puerto
+use_proxy = on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-de-proxy-para-nodejsnpm&quot;&gt;Configuración de proxy para nodejs(npm)&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm config set proxy http://username:password@proxyserver:puerto
+npm config set https-proxy http://username:password@proxyserver:puerto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configurar-proxy-para-git&quot;&gt;Configurar proxy para git&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config --global http.proxy http//proxyserver:puerto
+git config --global https.proxy https//proxyserver:puerto
+##En caso de tener conexión directa y necesitemos quitarle la configuración de proxy a git
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como se puede apreciar es muy complejo mantener constantemente la configuración de un proxy en tu pc, pero por suerte existen 
+otras opciones que te permiten configurar un proxy de forma global a todo el sistema operativo. En sistemas como Windows o MacOS 
+existen herramientas como Proxifier, ProxyCap entre otras que facilitan la salida a internet a través de un proxy por otra parte 
+sistemas operativos GNU/Linux tenemos alternativas a estos programas como las que listo a continuación.&lt;/p&gt;
+
+&lt;h1 id=&quot;redsock&quot;&gt;Redsock&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/darkk/redsocks&quot;&gt;Redsock&lt;/a&gt; es una herramienta que permite redirigir cualquier conexión TCP a SOCKS o proxy 
+HTTPS usando su firewall, por lo que la redirección puede ser en todo el sistema o en toda la red. Esta herramienta es muy
+útil porque nos permite con un solo archivo de configuración poder usar la conexión a través del proxy en todo el sistema 
+operativo.&lt;/p&gt;
+
+&lt;h2 id=&quot;paquetes-para-las-distintas-distribuciones-linux&quot;&gt;Paquetes para las distintas distribuciones linux&lt;/h2&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;Archlinux/Manjaro: &lt;a href=&quot;https://aur.archlinux.org/packages/redsocks-git&quot;&gt;https://aur.archlinux.org/packages/redsocks-git&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Debian:&lt;a href=&quot;http://packages.debian.org/search?searchon=names&amp;amp;keywords=redsocks&quot;&gt; http://packages.debian.org/search?searchon=names&amp;amp;keywords=redsocks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Gentoo (zugaina overlay):&lt;a href=&quot;http://gpo.zugaina.org/net-proxy/redsocks&quot;&gt;http://gpo.zugaina.org/net-proxy/redsocks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Gentoo: &lt;a href=&quot;https://packages.gentoo.org/packages/net-proxy/redsocks&quot;&gt;https://packages.gentoo.org/packages/net-proxy/redsocks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Ubuntu: &lt;a href=&quot;http://packages.ubuntu.com/search?searchon=names&amp;amp;keywords=redsocks&quot;&gt;http://packages.ubuntu.com/search?searchon=names&amp;amp;keywords=redsocks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;compilación-manual-de-redsock&quot;&gt;Compilación manual de redsock&lt;/h2&gt;
+&lt;p&gt;Para compilar redsock necesitamos clonar su repositorio en GitHub https://github.com/darkk/redsocks y seguir las instrucciones 
+en el README.md. Es necesario que en nuestro sistema esté instalado &lt;strong&gt;&lt;a href=&quot;http://libevent.org/&quot;&gt;libevent-2.0.x&lt;/a&gt;&lt;/strong&gt;, al igual que los
+compiladores &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clang&lt;/code&gt;. La compilación es tan fácil como ejecutar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt; en el directorio raíz del proyecto.&lt;/p&gt;
+
+&lt;h2 id=&quot;ejecutar-redsock&quot;&gt;Ejecutar redsock&lt;/h2&gt;
+&lt;p&gt;Ejecutar redsock depende mucho de la distribución que estés usando y de la forma en la que el paquete instaló redsock. El programa
+tiene las siguientes opciones de línea de comando:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-c especifica el camino al archivo de configuración (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./redsocks.conf&lt;/code&gt; es el usado por defecto)&lt;/li&gt;
+  &lt;li&gt;-t esta opción verifica la sintaxis del archivo de configuración&lt;/li&gt;
+  &lt;li&gt;-p establece un archivo para escribir el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getpid()&lt;/code&gt; donde se especifican las siguientes señales: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGUSR1&lt;/code&gt; vuelca la lista 
+de clientes conectados al registro, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGTERM&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGINT&lt;/code&gt; terminan el demonio, se cierran todas las conexiones activas.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Puedes ver un ejemplo del archivo de configuración en &lt;a href=&quot;https://github.com/darkk/redsocks/blob/master/redsocks.conf.example&quot;&gt;redsocks.conf.example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;ejemplo-de-iptables&quot;&gt;Ejemplo de iptables&lt;/h3&gt;
+&lt;p&gt;Tienes que construir iptables con seguimiento de conexión y objetivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REDIRECT&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  # Create new chain
+  root# iptables -t nat -N REDSOCKS
+  
+  # Ignore LANs and some other reserved addresses.
+  # See http://en.wikipedia.org/wiki/Reserved_IP_addresses#Reserved_IPv4_addresses
+  # and http://tools.ietf.org/html/rfc5735 for full list of reserved networks.
+  root# iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 100.64.0.0/10 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 198.18.0.0/15 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN
+  root# iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
+  
+  # Anything else should be redirected to port 12345
+  root# iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 12345
+  
+  # Any tcp connection made by `luser' should be redirected.
+  root# iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner luser -j REDSOCKS
+  
+  # You can also control that in more precise way using `gid-owner` from
+  # iptables.
+  root# groupadd socksified
+  root# usermod --append --groups socksified luser
+  root# iptables -t nat -A OUTPUT -p tcp -m owner --gid-owner socksified -j REDSOCKS
+  
+  # Now you can launch your specific application with GID `socksified` and it
+  # will be... socksified. See following commands (numbers may vary).
+  # Note: you may have to relogin to apply `usermod` changes.
+  luser$ id
+  uid=1000(luser) gid=1000(luser) groups=1000(luser),1001(socksified)
+  luser$ sg socksified -c id
+  uid=1000(luser) gid=1001(socksified) groups=1000(luser),1001(socksified)
+  luser$ sg socksified -c &quot;firefox&quot;
+  
+  # If you want to configure socksifying router, you should look at
+  # doc/iptables-packet-flow.png, doc/iptables-packet-flow-ng.png and
+  # https://en.wikipedia.org/wiki/File:Netfilter-packet-flow.svg
+  # Note, you should have proper `local_ip' value to get external packets with
+  # redsocks, default 127.0.0.1 will not go. See iptables(8) manpage regarding
+  # REDIRECT target for details.
+  # Depending on your network configuration iptables conf. may be as easy as:
+  root# iptables -t nat -A PREROUTING --in-interface eth_int -p tcp -j REDSOCKS
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Redsock es una de mis herramientas favoritas para configurar todo mi tráfico a internet a través de un proxy usando el protocolo TCP.
+A continuación les muestro otra alternativa más reciente que resulta muy interesante y de fácil configuración.&lt;/p&gt;
+
+&lt;h1 id=&quot;proxifier-for-linux&quot;&gt;Proxifier-For-Linux&lt;/h1&gt;
+&lt;p&gt;Proxifier-For-Linux es una herramienta que actúa como un intermediario entre el servidor proxy y los programas clientes que necesiten
+acceso a internet. Proxifier trabaja a través de los servidores proxy en nombre de los otros programas. Proxifier actúa como un punto 
+global para configurar las reglas de proxy, que se aplicarán a todos los programas del sistema. Como mencioné anteriormente es un proyecto
+nuevo por lo que actualmente solo tiene soporte para proxies http.&lt;/p&gt;
+
+&lt;p&gt;Como se explica en el repositorio oficial de &lt;a href=&quot;https://github.com/m0hithreddy/Proxifier-For-Linux&quot;&gt;Proxifier-for-linux&lt;/a&gt; nuestro sistema
+operativo debe contar con las siguientes dependencias&lt;/p&gt;
+
+&lt;h2 id=&quot;dependencias&quot;&gt;Dependencias&lt;/h2&gt;
+&lt;p&gt;A continuación se muestra la lista de dependencias requeridas para compilar y ejecutar Proxifier, asi como la posible instalación
+en dependencia del sistema operativo que uses.&lt;/p&gt;
+
+&lt;h3 id=&quot;instalar-las-dependencias&quot;&gt;Instalar las dependencias&lt;/h3&gt;
+&lt;p&gt;Para comprobar si tienes ya las dependencias instaladas puedes usar el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which &amp;lt;nombre del paquete&amp;gt;&lt;/code&gt;. Ejemplo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which autoconf&lt;/code&gt;
+y si te devuelve la ruta es que ya esa dependencia está instalada&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/autotools-mirror/autoconf&quot;&gt;autoconf&lt;/a&gt; [$ sudo apt install autoconf]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/autotools-mirror/automake&quot;&gt;automake&lt;/a&gt; [$ sudo apt install automake]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/autotools-mirror/libtool&quot;&gt;libtool&lt;/a&gt; [$ sudo apt install libtool]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mvertes/txt2man&quot;&gt;txt2man&lt;/a&gt; [$ sudo apt install txt2man]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;descargar-proxifier&quot;&gt;Descargar Proxifier&lt;/h2&gt;
+&lt;p&gt;Obtén la última versión estable de Proxifier clonando el repositorio de GitHub.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/m0hithreddy/Proxifier-For-Linux.git &amp;amp;&amp;amp; cd Proxifier-For-Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;construir-e-instalar&quot;&gt;Construir e Instalar&lt;/h2&gt;
+&lt;p&gt;Después de instalar todas las dependencias, obtén el código fuente de Proxifier y dentro del directorio donde está el código ejecuta
+los siguientes comandos:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ autoreconf -vfi
+$ ./configure
+$ make all
+$ sudo make uninstall
+$ sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;como-usar-proxifier&quot;&gt;Como usar Proxifier&lt;/h2&gt;
+&lt;p&gt;El servicio de Proxifier se puede habilitar ejecutando el comando:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl daemon-reload # Reload the service units
+$ sudo systemctl start proxifier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para más información de Proxifier puedes consultar la ayuda ejecutando el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ man proxifier&lt;/code&gt;. El archivo de configuración
+se puede encontrar en la ruta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/etc/proxifier.conf&lt;/code&gt; donde puedes especificar la configuración de tu proxy.&lt;/p&gt;
+
+&lt;p&gt;La siguiente herramienta que te quiero mostrar es Proxychains&lt;/p&gt;
+
+&lt;h1 id=&quot;proxychains&quot;&gt;Proxychains&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/haad/proxychains&quot;&gt;Proxychains-ng&lt;/a&gt; es un servidor proxy que soporta los protocolos de internet HTTPs, SOCKS4 y SOCKS5 y funciona
+en plataformas basadas en Unix. Permite que cualquier conexión TCP hecha por un programa siga una serie de proxies(de los protocolos antes mencionados)
+hasta su destino. La lista de proxies así como la estrategia de selección de los proxies se definen con anterioridad.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalar-proxychains&quot;&gt;Instalar proxychains&lt;/h2&gt;
+&lt;p&gt;Proxychains está disponible con &lt;a href=&quot;https://github.com/haad/proxychains/blob/master/www.pkgsrc.org&quot;&gt;pkgsrc&lt;/a&gt; para todos los que 
+lo usen en Linux, NetBSD, FreeBSD, OpenBSD, DragonFlyBSD o Mac OS X. Solo necesita instalar  &lt;a href=&quot;http://pkgsrc-wip.sourceforge.net/&quot;&gt;pkgsrc-wip&lt;/a&gt; 
+y ejecutar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make install&lt;/code&gt; en un el directorio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wip/proxychains&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;instalar-proxychains-desde-el-código-fuente&quot;&gt;Instalar proxychains desde el código fuente&lt;/h3&gt;
+
+&lt;p&gt;Clonar el código fuente de GitHub y ejecutar los siguientes comando:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/haad/proxychains.git &amp;amp;&amp;amp; cd proxychains
+# se necesita un compilador de C, preferiblemente gcc
+./configure
+make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;paquetes-para-las-distintas-distribuciones-linux-1&quot;&gt;Paquetes para las distintas distribuciones linux&lt;/h3&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;Archlinux/Manjaro: &lt;a href=&quot;https://www.archlinux.org/packages/community/x86_64/proxychains-ng/&quot;&gt;https://www.archlinux.org/packages/community/x86_64/proxychains-ng/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Debian: &lt;a href=&quot;https://packages.debian.org/search?keywords=proxychains&quot;&gt;https://packages.debian.org/search?keywords=proxychains&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Gentoo: &lt;a href=&quot;https://packages.gentoo.org/packages/net-proxy/proxychains&quot;&gt;https://packages.gentoo.org/packages/net-proxy/proxychains&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Fedora: &lt;a href=&quot;https://fedora.pkgs.org/32/fedora-x86_64/proxychains-ng-4.13-5.fc32.x86_64.rpm.html&quot;&gt;https://fedora.pkgs.org/32/fedora-x86_64/proxychains-ng-4.13-5.fc32.x86_64.rpm.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Ubuntu: &lt;a href=&quot;http://packages.ubuntu.com/search?searchon=names&amp;amp;keywords=proxychains&quot;&gt;http://packages.ubuntu.com/search?searchon=names&amp;amp;keywords=proxychains&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configuración&quot;&gt;Configuración&lt;/h2&gt;
+&lt;p&gt;Proxychains busca la configuración en el siguiente orden:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Puerto proxy SOCKS5 en la variable de entorno $ {PROXYCHAINS_SOCKS5} (si se establece, no se buscarán más configuraciones)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Archivo listado en la variable de entorno $ {PROXYCHAINS_CONF_FILE} o proporcionado como un argumento -f para el script o binario de proxychains.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;./proxychains.conf&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$(HOME)/.proxychains/proxychains.conf&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;/etc/proxychains.conf&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ver más de la configuración en el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/proxychains.conf&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;ejemplo-de-como-configurar-varios-proxies&quot;&gt;Ejemplo de como configurar varios proxies&lt;/h3&gt;
+
+&lt;p&gt;Al final del fichero &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/proxychains.conf&lt;/code&gt; se encuentra la lista donde podemos agregar nuestros proxies. Las estrategias de
+selección de proxies varían entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic_chain, strict_chain, round_robin_chain, random_chain&lt;/code&gt; y solo uno puede estar 
+descomentado.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;dynamic_chain: Dinámico: cada conexión se realizará a través de proxies encadenados, todos los proxies encadenados en el orden en que aparecen en la lista, al menos un proxy debe estar en línea para jugar en cadena (se omiten los proxies muertos) de lo contrario, EINTR se devuelve a la aplicación&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;strict_chain: Estricto: cada conexión se realizará a través de proxies encadenados, todos los proxies encadenados en el orden en que aparecen en la lista, todos los proxies deben estar en línea para jugar en cadena; de lo contrario, EINTR se devuelve a la aplicación&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;round_robin_chain: Round Robin: cada conexión se realizará a través de proxies encadenados de longitud &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chain_len&lt;/code&gt;, todos los proxies encadenados en el orden en que aparecen en la lista, al menos un proxy debe estar en línea para jugar en cadena (se omiten los proxies muertos). el inicio de la cadena de proxy actual es el proxy después del último proxy en la cadena de proxy invocada anteriormente. Si se alcanza el final de la cadena de proxy mientras se buscan proxies, comience de nuevo desde el principio. De lo contrario, EINTR se devuelve a la aplicación. Esta semántica no está garantizada en un entorno multiproceso.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;random_chain: Aleatorio: cada conexión se realizará mediante un proxy aleatorio (o una cadena de proxy, consulte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chain_len&lt;/code&gt;) de la lista.&lt;/p&gt;
+
+    &lt;p&gt;[ProxyList]
+  # add proxy here …
+  # meanwile
+  # defaults set to “tor”
+  socks4  127.0.0.1 9050
+  #psiphon proxy
+  http 127.0.0.1 52525
+  socks5 127.0.0.1 42552
+  #Otro Proxy 
+  http 192.168.1.11 8080 user password
+  #Mobile proxy
+  http 192.168.44.244 3128 user password&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ejemplos-de-uso&quot;&gt;Ejemplos de uso&lt;/h2&gt;
+
+&lt;p&gt;Ejecutar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proxychains &amp;lt;programa a ejecutar a través de un proxy&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ proxychains telnet targethost.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;En este ejemplo se ejecuta el programa &lt;strong&gt;telnet&lt;/strong&gt; a través de un proxy ( o una cadena de proxies ) especificada por proxychains.con
+in this example it will run telnet through proxy(or chained proxies) specified by proxychains.conf&lt;/p&gt;
+
+&lt;p&gt;Proxychains nos da una gran ventaja al poder encadenar muchos proxies a la vez lo que se usa mucho en ciberseguridad para ocultar
+la identidad de las peticiones realizadas. Una de las desventajas que tiene proxychains es que se ejecuta en la consola lo cual 
+resulta incómodo cuando usamos programas con interfaz gráfica.&lt;/p&gt;
+
+&lt;p&gt;El siguiente en la lista es uno de mis favoritos pues es una VPN que permite configurar un proxy global para todo el 
+sistema operativo así como montar un firewall en la pc.&lt;/p&gt;
+
+&lt;h1 id=&quot;windscribe&quot;&gt;Windscribe&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://windscribe.com/?friend=abhyp2zr&quot;&gt;Windscribe&lt;/a&gt; es un conjunto de herramientas que permiten bloquear los seguidores de anuncios y los beacons web, 
+restaurar el acceso a contenido bloqueado y ayudarle a proteger su privacidad en línea. Hay dos componentes: 
+la aplicación de escritorio VPN (Windows, MacOS y Linux) y la extensión del navegador (Chrome, Edge, Firefox, Safari, …)&lt;/p&gt;
+
+&lt;p&gt;La aplicación de escritorio es un cliente VPN (Virtual Private Network). Crea un túnel encriptado desde tu computadora a 
+los servidores de &lt;a href=&quot;https://windscribe.com/?affid=abhyp2zr&quot;&gt;winscribe&lt;/a&gt;, y toda tu actividad se envía a través del túnel. Esto tiene dos ventajas:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;La dirección IP de su proveedor de servicios de Internet (ISP) está enmascarada, por lo que cualquier sitio web que visite 
+o cualquier aplicación que utilice (Skype, proveedores de correo electrónico, BitTorrent, etc.) verá nuestra
+dirección IP compartida por miles de personas.&lt;/li&gt;
+  &lt;li&gt;Su proveedor de servicios de Internet no puede ver lo que hace en línea. Esto es mucho más importante de lo que piensas.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Lo primero que se tiene que hacer es crear una cuenta en &lt;a href=&quot;https://windscribe.com/?friend=abhyp2zr&quot;&gt;Windscribe&lt;/a&gt; registrándose 
+&lt;a href=&quot;https://windscribe.com/?friend=abhyp2zr&quot;&gt;aquí&lt;/a&gt;. Windscribe nos da 2GB de consumo mensual gratis, pero si confirmamos nuestro
+correo electrónico este aumenta 5GB, además puedes aumentar hasta 15GB mensuales si creas un post en twitter dando en el botón
+&lt;em&gt;&lt;strong&gt;Tweet4Data&lt;/strong&gt;&lt;/em&gt; en la configuración de tu cuenta.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proxy-global/more-data.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&quot;instalar-windscribe&quot;&gt;Instalar Windscribe&lt;/h2&gt;
+&lt;p&gt;Después de registrarse se descarga el cliente de escritorio o la extensión para su navegador favorito 
+en la sesión de &lt;a href=&quot;https://windscribe.com/?friend=abhyp2zr&quot;&gt;Descargas&lt;/a&gt;. Seguir las instrucciones del enlace de descarga
+en dependencia del sistema operativo que uses.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuración-del-cliente-de-windscribe-para-linux&quot;&gt;Configuración del cliente de Windscribe para Linux&lt;/h2&gt;
+&lt;p&gt;Lo primero que tenemos que hacer es arrancar el servicio de windscribe para ello ejecutamos el comando:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl start windscribe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez este corriendo el servicio de windscribe debemos configurar el proxy ejecutando el comando
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;windscribe proxy --host &amp;lt;direccion del proxy&amp;gt; --port &amp;lt;puerto&amp;gt; --user &amp;lt;usuario&amp;gt; --password &amp;lt;contraseña&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;windscribe proxy --host 19.18.4.54 --port 3128 --user acosta --password &quot;super password&quot;
+windscribe proxy on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Con los comandos anteriores configuramos y activamos windscribe para que use nuestro proxy. Ahora cuando para conectar toda las 
+aplicaciones salgan a internet a través de Windscribe ejecutamos el comando:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;windscribe connect best # Nos conecta al servidor de windscribe con mejor rendimiento
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para consultar la ayuda de windscribe podemos ejecutar el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;windscribe --help&lt;/code&gt;&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proxy-global/windscribe-help.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Estas son algunas de las opciones que existen para configurar la salida a internet a través de un proxy en sistemas operativos GNU-Linux.
+De todas las variantes mostradas en este artículo mi favorita sin dudas es windscribe por todas las facilidades que ofrece.
+Espero que les sirva de ayuda en caso que quieran tener configurado de forma global un proxy en linux.&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Proxy" /><category term="VPN" /><category term="Linux" /><category term="Global Proxy" /><category term="Proxifier" /><category term="Redsock" /><category term="Windscribe" /><category term="Proxychains" /><summary type="html">En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux</summary></entry><entry><title type="html">Creando una antena casera direccional de largo alcance</title><link href="http://localhost:4000/antena-casera-largo-alcance/" rel="alternate" type="text/html" title="Creando una antena casera direccional de largo alcance" /><published>2020-11-29T00:00:00-05:00</published><updated>2020-11-29T00:00:00-05:00</updated><id>http://localhost:4000/antena-casera-largo-alcance</id><content type="html" xml:base="http://localhost:4000/antena-casera-largo-alcance/">&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/portada-antena.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&quot;cómo-crear-una-antena-casera-de-largo-alcance&quot;&gt;¿Cómo crear una antena casera de largo alcance?&lt;/h2&gt;
+
+&lt;p&gt;Hoy aprenderás a crear una antena casera para que tu nivel de Hack llegue a distancias inimaginables.&lt;/p&gt;
+
+&lt;p&gt;Empecemos por el principio, ¿por qué elementos está compuesta la antena?&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/antena.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Parecerá una broma, pero no… es una lata de Pringles. Estas latas pueden convertirse en antenas WiFi caseras direccionales, otorgándonos la capacidad de recibir señales inalámbricas de aquellas redes que se encuentren bastante lejos.&lt;/p&gt;
+
+&lt;p&gt;Algunos de los componentes que vamos a estar comentando los podrás conseguir en la ferretería más cercana o de confianza. Esto es simplemente acercaros a la persona que os atienda y le comentáis que queréis estar Hack… ya con esto, sabrá a qué habéis venido y lo que estáis buscando.&lt;/p&gt;
+
+&lt;p&gt;El primer paso que debes seguir es colocar la lata vacía de Pringles sobre una mesa y medir la longitud de la misma con una cinta métrica. Marca un punto sobre su punto medio, con un permanente o con lo que consideres (mientras lo veas)… ya que en caso de usar un trípode tendrás que engancharlo en este punto para equilibrar el peso y lograr estabilidad, resultando más sencillo maniobrar con nuestro experimento.&lt;/p&gt;
+
+&lt;p&gt;¿Qué hay dentro de la lata?, vamos a echarle un ojo:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/interior-lata1.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Os lo muestro también con la parte superior destapada para los/as curiosos/as:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/interior-lata2.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Como se puede apreciar, necesitaréis de una varilla roscada de 140 mm de longitud y 3 mm de grosor. Lo más probable es que también necesitéis 5 arandelas (una de ellas en la imagen no se aprecia porque estaría por el otro lado de la lata, la cual sustenta toda la base de la antena bajo presión acompañándola de una tuerca).&lt;/p&gt;
+
+&lt;p&gt;Si hacemos cálculos, tuercas en total… necesitarías 8 (sin contar con la que está por el otro lado).&lt;/p&gt;
+
+&lt;p&gt;El conjunto de arandelas con la varilla, facilita la recepción de las ondas de frecuencia WiFi (2.4 GHZ) en el interior del tubo, el cual es de papel de aluminio, reflejando así en el culo del bote la señal y amplificando en consecuencia la misma sobre la llave USB WiFi:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/medidasexactas.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;A la hora de montar las tuercas y arandelas, debéis ser meticulosos con las medidas entre arandelas grandes… pues conseguiremos así que la onda realice la parábola lo mejor posible:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/medidas.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Una vez con todo esto montado, obviamente… necesitamos de un sistema de sujeción.&lt;/p&gt;
+
+&lt;p&gt;Por un lado, deberemos sujetar el final de la antena. Para ello, mediante un hueco en la tapa de la lata, pasaremos un clavo en el centro. Dicho extremo de la sujeción atrapará el clavo por dentro de la lata, pudiendo así cerrarla y dejando el interior terminado.&lt;/p&gt;
+
+&lt;p&gt;Por otro lado, en cuanto al exterior… mediante otro sistema de agarre, sostendremos el clavo por fuera, enganchando el mismo a un cable coaxial por el centro:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/enganche.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Desde que ya tengamos todo esto conectado, el extremo del cable coaxial tan solo lo tendremos que enganchar a nuestro conector USB WiFi:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/conexionfinal.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;En la imagen adjunta, el recepetor de señales tiene la propia antena que viene por defecto puesta… pero es en este punto cuando se la quitaremos y la conectaremos a la antena formada por el bote de Pringles.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, la antena quedaría de la siguiente forma:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/antenacasera/hack.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;De manera casi inmediata, notaremos que el nivel de Hack habrá aumentado y ya estaremos preparados para ver una gran cantidad de redes WiFi en el entorno.&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Pentesting" /><category term="OSWP" /><category term="Antena Casera" /><summary type="html">¿Te gustaría aprender a crear una antena casera de largo alcance?, toma asiento que te lo explico.</summary></entry></feed>
