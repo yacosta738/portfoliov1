@@ -525,11 +525,11 @@ Por último se crea un fichero **`index.html`** que contendrá todo el código h
 
 ```
 
-Todo el código se puede descargar desde GitHub en el siguiente link [https://github.com/yacosta738/countdown-to-new-year](https://github.com/yacosta738/countdown-to-new-year)
-  
 <p align="center">
 <img src="/assets/images/countdown-to-new-year/project-structure.png">
 </p>
 <p align="center">
 Estructura general del proyecto final
 </p>
+
+Todo el código se puede descargar desde GitHub en el siguiente link [https://github.com/yacosta738/countdown-to-new-year](https://github.com/yacosta738/countdown-to-new-year)
