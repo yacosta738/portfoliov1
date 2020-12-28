@@ -529,5 +529,7 @@ Todo el código se puede descargar desde GitHub en el siguiente link [https://gi
   
 <p align="center">
 <img src="/assets/images/countdown-to-new-year/project-structure.png">
+</p>
+<p align="center">
 Estructura general del proyecto final
 </p>
