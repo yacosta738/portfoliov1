@@ -1,4 +1,509 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-18T09:40:04-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry><title type="html">Agregar un selector de imágenes a una aplicación hecha en Flutter</title><link href="http://localhost:4000/agregar-selector-imagen-flutter/" rel="alternate" type="text/html" title="Agregar un selector de imágenes a una aplicación hecha en Flutter" /><published>2020-12-18T00:00:00-05:00</published><updated>2020-12-18T00:00:00-05:00</updated><id>http://localhost:4000/agregar-selector-imagen-flutter</id><content type="html" xml:base="http://localhost:4000/agregar-selector-imagen-flutter/">&lt;p&gt;&lt;img src=&quot;/assets/images/flutter-selector-imagen/portada.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-27T19:51:02-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry><title type="html">Cuenta regresiva para el nuevo Año (Sistema planetario)</title><link href="http://localhost:4000/countdown-to-new-year/" rel="alternate" type="text/html" title="Cuenta regresiva para el nuevo Año (Sistema planetario)" /><published>2020-12-27T00:00:00-05:00</published><updated>2020-12-27T00:00:00-05:00</updated><id>http://localhost:4000/countdown-to-new-year</id><content type="html" xml:base="http://localhost:4000/countdown-to-new-year/">&lt;p&gt;&lt;img src=&quot;/assets/images/countdown-to-new-year/portada.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;La astronomía y la programación son dos de mis pasiones que en esta ocasión he decidido juntar. Con este objetivo crearemos una web sencilla para llevar la cuenta regresiva de cuantos días faltan hasta el nuevo año simulando el movimiento del planeta tierra. El demo se puede apreciar en el siguiente link &lt;a href=&quot;https://yacosta738.github.io/countdown-to-new-year/&quot;&gt;https://yacosta738.github.io/countdown-to-new-year/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/countdown-to-new-year/example.png&quot; /&gt;
+ Ejemplo final del proyecto
+&lt;/p&gt;
+
+&lt;p&gt;Lo primero es crear un fichero &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;style.css&lt;/code&gt;&lt;/strong&gt; donde se define el estilo y la órbita de cada planeta:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    html {
+    box-sizing: border-box;
+    }
+    html *,
+    html *:before,
+    html *:after {
+    box-sizing: inherit;
+    }
+    
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 62.5%;
+    background-color: #121212;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+    
+    .solar-system {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    padding-top: 100%;
+    right: -50%;
+    }
+    
+    @media (min-width: 700px) {
+    .solar-system {
+    padding-top: 700px;
+    }
+    }
+    
+    
+    /*** ORBITS ***/
+    
+    .orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px dotted rgba(84 84 84 / 15%);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    }
+    .orbit-sun {
+    width: calc(50%);
+    height: calc(50%);
+    border: 1px dotted #ff6600;
+    background: #ffcc00;
+    }
+    .orbit-sun:before {
+    content: &quot;&quot;;
+    background: #ff660017;
+    width: 99%;
+    height: 99%;
+    display: block;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    border-radius: 100%;
+    box-shadow: 0 0 10em 5em #ff66006b, 0 0 100px 50px #ff66006b inset, 0 0 10px 5px #ffcc00f2;
+    }
+    .orbit.orbit-sun:after {
+    content: &quot;SUN&quot;;
+    color: #ffa200;
+    top: 50%;
+    position: absolute;
+    left: -3.5em;
+    }
+    .orbit-mercury {
+    width: calc(100%);
+    height: calc(100%);
+    transform: translate(-50%, -50%);
+    }
+    .orbit-venus {
+    width: calc(150%);
+    height: calc(150%);
+    transform: translate(-50%, -50%);
+    }
+    .orbit-earth {
+    width: calc(200%);
+    height: calc(200%);
+    }
+    .orbit-earth:after {
+    content: &quot;&quot;;
+    border: 2px solid red;
+    width: 1em;
+    height: 1em;
+    display: block;
+    position: relative;
+    border-color: #54cbeb #54cbeb transparent transparent;
+    transform: rotate(-50deg);
+    border-width: 2px 2px 0 0;
+    top: 52.75%;
+    left: -0.5em; 	
+    -webkit-animation: blinker 2s linear infinite; 	
+    animation: blinker 2s linear infinite;
+    }
+    .orbit-mars {
+    width: calc(280%);
+    height: calc(280%);
+    transform: translate(-50%, -50%);
+    }
+    .orbit-asteroids {
+    width: calc(380%);
+    height: calc(380%);
+    transform: translate(-50%, -50%) rotate(0deg);
+    }
+    
+    
+    
+    /*** PLANETS ***/
+    
+    .planet {
+    position: absolute;
+    top: 50%;
+    border-radius: 100%;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 0s ease 0s;
+    }
+    .planet-mercury {
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    transition-duration: 1s;
+    background: #bcc1c9;
+    }
+    .planet-venus {
+    left: -8px;
+    width: 14px;
+    height: 14px;
+    transition-duration: 2s;
+    background: #ec5f24
+    }
+    .planet-earth {
+    left: -13px;
+    width: 24px;
+    height: 24px;
+    transition-duration: 3s;
+    z-index: 1;
+    }
+    .planet-mars {
+    left: -9px;
+    width: 18px;
+    height: 18px;
+    transition-duration: 4s;
+    background: #d83e3c;
+    }
+    .planet-asteroids {
+    left: -38px;
+    width: 308px;
+    height: 1500px;
+    transition: all 5s ease 0s;
+    }
+    .planet-mercury:before {
+    content: &quot;MERCURY&quot;;
+    color: #bcc1c9;
+    margin-left: 15px;
+    top: 0px;
+    position: absolute;
+    height: 10px;
+    line-height: 10px;
+    }
+    .planet-venus:before {
+    content: &quot;VENUS&quot;;
+    color: #ec5f24;
+    margin-left: 21px;
+    top: 1px;
+    position: absolute;
+    height: 14px;
+    line-height: 14px;
+    }
+    .planet-earth:before {
+    content: &quot;EARTH&quot;;
+    color: #54cbeb;
+    margin-left: 29px;
+    top: 1px;
+    position: absolute;
+    height: 24px;
+    line-height: 24px;
+    }
+    .planet-mars:before {
+    content: &quot;MARS&quot;;
+    color: #d83e3c;
+    margin-left: 23px;
+    top: 1px;
+    position: absolute;
+    height: 18px;
+    line-height: 18px;
+    }
+    .planet-asteroids:before {
+    content: &quot;ASTEROID BELT&quot;;
+    color: #666666;
+    margin-left: 8em;
+    top: 36.75%;
+    position: absolute;
+    }
+    .planet-mars:after, .planet-venus:after, .planet-mercury:after, .planet-earth:after {
+    content: &quot;&quot;;
+    background: linear-gradient(105deg, rgba(0,0,0,1), rgba(0,0,0,0.6), transparent, transparent);
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-shadow: 0 0 3px 2px #ffffff26;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    }
+    .planet-earth:after {
+    box-shadow: 0 0 5px 3px #54cbeb5c;
+    }
+    .planet img {
+    width: 100%;
+    }
+    
+    
+    
+    /*** SELECTED DAYS ***/
+    
+    .new-year-line, .winter-solstice-line {
+    width: 12em;
+    border-bottom: 2px dotted white;
+    position: absolute;
+    left: -13.35em;
+    top: 50%;
+    z-index: -1;
+    color: white;
+    margin-top: -13px;
+    margin-left: -50%;
+    height: 14px;
+    line-height: 1em;
+    }
+    .new-year-line:after, .winter-solstice-line:after {
+    content: &quot;&quot;;
+    width: 28px;
+    height: 28px;
+    display: block;
+    float: right;
+    position: absolute;
+    background: #ffffff00;
+    right: -28px;
+    top: -1px;
+    border: 2px dotted #fff;
+    border-radius: 100%;
+    }
+    .winter-solstice-line {
+    margin-top: 120px;
+    left: -12.05em;
+    }
+    #cronoNewYear, #cronoWinterSolstice {
+        left: 0;
+        position: absolute;
+        color: #fff;
+        width: 100%;
+        bottom: -17px;
+        font-size: 1.1em;
+    }
+    #cronoNewYear span, #cronoWinterSolstice span {
+        font-size: 0.75em;
+        color: #666;
+    }
+    
+    
+    
+    /*** WARNING ***/
+    
+    #warning {
+        position: fixed;
+        left: 2em;
+        bottom: 2em;
+        background: rgb(0 0 0 / 0.75);
+        height: 5em;
+        width: 45em;
+        font-size: 1.35em;
+        color: #ffa200;
+        z-index: 3;
+        text-transform: uppercase;
+        padding: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #warning:before {
+        content: &quot; ! &quot;;
+        z-index: 2;
+        font-size: 1.9em;
+        margin-left: 1.15em;
+        color: #ffa200;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    #warning:after {
+        content: &quot;&quot;;
+        background: #ffa200;
+        position: absolute;
+        left: 0;
+        width: 5em;
+        height: 5em;
+        z-index: 0;
+    }
+    #warning p {
+        display: block !important;
+        float: left;
+        width: 100%;
+        margin: 0 !important;
+        padding-left: 2.5em;
+    }
+    #warning p:before {
+        content: &quot;&quot;;
+        position: absolute;
+        z-index: 1;
+        border: 1.75em solid transparent;
+        border-bottom: 2.85em solid #040404;
+        left: 0.775em;
+        top: -0.75em;
+    }
+    #reload {
+        background: rgb(255 162 0);
+        border: 0;
+        border-radius: 1px;
+        padding: 0.5em 0.75em;
+        margin-left: 1.5em;
+        cursor: pointer;
+        outline: none;
+    }
+    #reload:hover {
+        background: #54cbeb;
+    }
+    
+    
+    
+    /* ANIMATIONS */
+    
+    @-webkit-keyframes blinker {
+    0%   { opacity:0;   top:52.85%;}
+    40%  { opacity:1;   top:51%;   }
+    50%  { opacity:0;   top:51%;   }
+    60%  { opacity:1;   top:51%; }
+    100% { opacity:0;   top:48.25%;}
+    }
+    
+    @keyframes blinker {
+    0%   { opacity:0;   top:52.85%;}
+    40%  { opacity:1;   top:51%;   }
+    50%  { opacity:0;   top:51%;   }
+    60%  { opacity:1;   top:51%; }
+    100% { opacity:0;   top:48.25%;}
+    }
+    @-webkit-keyframes spin {
+    from {transform: rotate(0deg) }
+    to {transform: rotate(-360deg);}
+    }
+    @keyframes spin {
+    from {transform: rotate(0deg) }
+    to {transform: rotate(-360deg);}
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Después creamos el fichero &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script.js&lt;/code&gt;&lt;/strong&gt; donde se define toda la lógica para calcular la cantidad de días que faltan para el nuevo año:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//prevent loading error
+document.getElementById('warning').remove();
+
+//short getElementById
+elem = function (id) {
+    return document.getElementById(id);
+}
+
+//count until date
+const newYearDate = new Date(`Jan 1, ${new Date().getFullYear() + 1} 00:00:00`).getTime();
+
+//title angles
+const todayDate = new Date().getTime();
+const todaySecondsLeft = (newYearDate - todayDate) / 1000;
+const todayDays = parseInt(todaySecondsLeft / 86400);
+const randMer = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+const randVen = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+const randMar = Math.floor(Math.random() * (16 - 8 + 1)) + 8;
+const style = document.createElement('style');
+style.innerHTML = '.orbit-mercury {transform: translate(-50%, -50%) rotate(' + randMer + 'deg)} .orbit-venus {transform: translate(-50%, -50%) rotate(' + randVen + 'deg)} .orbit-mars {transform: translate(-50%, -50%) rotate(' + randMar + 'deg)} .planet-mercury {transform:rotate(-' + randMer + 'deg)} .planet-venus {transform:rotate(-' + randVen + 'deg)} .planet-mars {transform:rotate(-' + randMar + 'deg)} .planet-earth {transform:rotate(' + todayDays + 'deg)} .planet-venus {transform:rotate(-' + randVen + 'deg)} ';
+document.head.appendChild(style);
+
+//countdown vars
+let days, hours, minutes, seconds;
+
+//countdown
+const countDown = setInterval(function () {
+
+    const rightNow = new Date().getTime();
+    const timeTo = newYearDate - rightNow;
+
+    days = Math.floor(timeTo / (1000 * 60 * 60 * 24));
+    hours = Math.floor((timeTo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    minutes = Math.floor((timeTo % (1000 * 60 * 60)) / (1000 * 60));
+    seconds = Math.floor((timeTo % (1000 * 60)) / 1000);
+
+    if (hours &amp;lt; 10) hours = &quot;0&quot; + hours;
+    if (minutes &amp;lt; 10) minutes = &quot;0&quot; + minutes;
+    if (seconds &amp;lt; 10) seconds = &quot;0&quot; + seconds;
+
+    elem(&quot;cronoNewYear&quot;).innerHTML = days + &quot; &amp;lt;span&amp;gt;DAYS&amp;lt;/span&amp;gt; &amp;amp;nbsp;&quot; + hours + &quot;:&quot; + minutes + &quot;:&quot; + seconds + &quot; &amp;lt;span&amp;gt;LEFT&amp;lt;/span&amp;gt;&quot;;
+    let newDays;
+    if (days &amp;lt; 0) {
+        elem(&quot;cronoNewYear&quot;).style.display = 'none';
+        newDays = days.toString().substr(1);
+    } else {
+        newDays = &quot;-&quot; + days;
+    }
+    elem(&quot;position-earth&quot;).style.transform = 'translate(-50%, -50%) rotate(' + newDays + 'deg';
+
+    let solsDays;
+    const cDays = days - 11;
+    if (cDays &amp;lt; 0) {
+        elem(&quot;cronoWinterSolstice&quot;).style.display = 'none';
+    } else {
+        solsDays = cDays
+    }
+    elem(&quot;cronoWinterSolstice&quot;).innerHTML = solsDays + &quot; &amp;lt;span&amp;gt;DAYS&amp;lt;/span&amp;gt; &amp;amp;nbsp;&quot; + hours + &quot;:&quot; + minutes + &quot;:&quot; + seconds + &quot; &amp;lt;span&amp;gt;LEFT&amp;lt;/span&amp;gt;&quot;;
+
+    const opacityList = document.querySelectorAll('.planet');
+    for (let i = 0; i &amp;lt; opacityList.length; i++) {
+        opacityList[i].style.opacity = '1';
+    }
+
+    if (timeTo &amp;lt; 0) {
+        clearInterval(countDown);
+    }
+
+}, 1000);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Por último se crea un fichero &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;&lt;/strong&gt; que contendrá todo el código html de nuestra página web. El documento html comienza con la definición del tipo de documento seguido por el lenguaje de la página, en la sección del encabezado encontramos el título, algunos metadatos así como la importación de los estilos de la página. En el cuerpo del documento hacemos usos de las clases creadas previamente para poder visualizar los planetas y sus órbitas. Al final importamos el fichero javascript creado con anterioridad:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;en&quot; &amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+  &amp;lt;title&amp;gt;Countdown to New Year &amp;lt;/title&amp;gt;
+  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css&quot;&amp;gt;
+&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&amp;gt;
+
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;!-- partial:index.partial.html --&amp;gt;
+&amp;lt;div class=&quot;solar-system&quot;&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-sun&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-mercury&quot; id=&quot;position-mercury&quot;&amp;gt;
+&amp;lt;div class=&quot;planet planet-mercury&quot; id=&quot;opacity-mercury&quot;&amp;gt;
+&amp;lt;img src=&quot;assets/image/mercury.png&quot; alt=&quot;mercury&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-venus&quot; id=&quot;position-venus&quot;&amp;gt;
+&amp;lt;div class=&quot;planet planet-venus&quot; id=&quot;opacity-venus&quot;&amp;gt;
+&amp;lt;img src=&quot;assets/image/venus.png&quot; alt=&quot;venus&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-earth&quot; id=&quot;position-earth&quot;&amp;gt;
+&amp;lt;div class=&quot;planet planet-earth&quot; id=&quot;opacity-earth&quot;&amp;gt;
+&amp;lt;img src=&quot;assets/image/earth.png&quot; alt=&quot;earth&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-mars&quot; id=&quot;position-mars&quot;&amp;gt;
+&amp;lt;div class=&quot;planet planet-mars&quot; id=&quot;opacity-mars&quot;&amp;gt;
+&amp;lt;img src=&quot;assets/image/mars.png&quot; alt=&quot;mars&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;orbit orbit-asteroids&quot; id=&quot;position-asteroids&quot;&amp;gt;
+&amp;lt;div class=&quot;planet planet-asteroids&quot; id=&quot;opacity-asteroids&quot;&amp;gt;
+&amp;lt;img src=&quot;assets/image/asteroids-belt.png&quot; alt=&quot;asteroids&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;new-year-line&quot;&amp;gt;NEW YEAR &amp;lt;span id='cronoNewYear'&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;div class=&quot;winter-solstice-line&quot;&amp;gt;WINTER SOLSTICE &amp;lt;span id=&quot;cronoWinterSolstice&quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div id=&quot;warning&quot;&amp;gt;&amp;lt;p&amp;gt;it seems that the earth has gone out of its orbit... &amp;lt;button id=&quot;reload&quot; onclick=&quot;location.reload()&quot;&amp;gt;RE-ORBIT&amp;lt;/button&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;!-- partial --&amp;gt;
+  &amp;lt;script  src=&quot;./script.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Todo el código se puede descargar desde GitHub en el siguiente link &lt;a href=&quot;https://github.com/yacosta738/countdown-to-new-year&quot;&gt;https://github.com/yacosta738/countdown-to-new-year&lt;/a&gt;&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/countdown-to-new-year/project-structure.png&quot; /&gt;
+Estructura general del proyecto final
+&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Desarrollo web" /><category term="JavaScript" /><category term="CSS" /><category term="Nuevo Año" /><summary type="html">Eres fanático de la astronomía y del desarrollo web, pues si es así te enseño como crear una página para llevar la cuenta regresiva para el nuevo año</summary></entry><entry><title type="html">Agregar un selector de imágenes a una aplicación hecha en Flutter</title><link href="http://localhost:4000/agregar-selector-imagen-flutter/" rel="alternate" type="text/html" title="Agregar un selector de imágenes a una aplicación hecha en Flutter" /><published>2020-12-18T00:00:00-05:00</published><updated>2020-12-18T00:00:00-05:00</updated><id>http://localhost:4000/agregar-selector-imagen-flutter</id><content type="html" xml:base="http://localhost:4000/agregar-selector-imagen-flutter/">&lt;p&gt;&lt;img src=&quot;/assets/images/flutter-selector-imagen/portada.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;El selector de imágenes es un componente común que a menudo se necesita para cambiar las fotos de los perfiles de
 usuario entre muchas otras opciones donde es necesario subir una imagen. Con el fin de proveer a nuestra aplicación de

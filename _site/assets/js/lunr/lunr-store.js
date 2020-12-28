@@ -13,4 +13,9 @@ var store = [{
         "excerpt":"El selector de imágenes es un componente común que a menudo se necesita para cambiar las fotos de los perfiles de usuario entre muchas otras opciones donde es necesario subir una imagen. Con el fin de proveer a nuestra aplicación de la opción de subir imágenes seleccionadas desde nuestro dispositivo,...","categories": ["Programación","Flutter","Android","iOS"],
         "tags": ["Programación","Flutter","Android","iOS","Cámara","Galería de Imágenes"],
         "url": "http://localhost:4000/agregar-selector-imagen-flutter/",
-        "teaser":"http://localhost:4000/assets/images/flutter-selector-imagen/portada.png"}]
+        "teaser":"http://localhost:4000/assets/images/flutter-selector-imagen/portada.png"},{
+        "title": "Cuenta regresiva para el nuevo Año (Sistema planetario)",
+        "excerpt":"La astronomía y la programación son dos de mis pasiones que en esta ocasión he decidido juntar. Con este objetivo crearemos una web sencilla para llevar la cuenta regresiva de cuantos días faltan hasta el nuevo año simulando el movimiento del planeta tierra. El demo se puede apreciar en el...","categories": ["Programación","CSS","Desarrollo web","JavaScript"],
+        "tags": ["Programación","Desarrollo web","JavaScript","CSS","Nuevo Año"],
+        "url": "http://localhost:4000/countdown-to-new-year/",
+        "teaser":"http://localhost:4000/assets/images/countdown-to-new-year/portada.jpg"}]
