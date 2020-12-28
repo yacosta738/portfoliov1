@@ -17,5 +17,5 @@ var store = [{
         "title": "Cuenta regresiva para el nuevo Año (Sistema planetario)",
         "excerpt":"La astronomía y la programación son dos de mis pasiones que en esta ocasión he decidido juntar. Con este objetivo crearemos una web sencilla para llevar la cuenta regresiva de cuantos días faltan hasta el nuevo año simulando el movimiento del planeta tierra. El demo se puede apreciar en el...","categories": ["Programación","CSS","Desarrollo web","JavaScript"],
         "tags": ["Programación","Desarrollo web","JavaScript","CSS","Nuevo Año"],
-        "url": "http://localhost:4000/countdown-to-new-year/",
+        "url": "http://localhost:4000/countdown-to-new-year-astronomy/",
         "teaser":"http://localhost:4000/assets/images/countdown-to-new-year/portada.jpg"}]
