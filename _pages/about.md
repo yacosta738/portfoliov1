@@ -18,9 +18,9 @@ Autodidacta y apasionado de la inteligencia artificial.
 Descargar resumen y [curriculum vitae](https://www.dropbox.com/s/krhxr27h4mev5jv/Yuniel%27s%20Curriculum.pdf?dl=0)
 
 ## Educación
-Lic. Ciencia de la Computación
+Licenciado en Ciencia de la Computación
 
-Universidad Central “Marta Abreu” de Las Villas
+**Universidad Central “Marta Abreu” de Las Villas**
 
 09/2012 - 07/2017,
 Santa Clara, Cuba
@@ -40,7 +40,7 @@ R
   
 Maestría en Ciencia de la Computación
 
-Universidad Central “Marta Abreu” de Las Villas
+**Universidad Central “Marta Abreu” de Las Villas**
 
 04/2019 - Presente,
 Santa Clara, Cuba
