@@ -101,7 +101,7 @@ Santa Clara, Cuba
     <span>C</span>
   </div>
   <div>
-    <img src="/assets/images/logo/bash" alt="Bash">
+    <img src="/assets/images/logo/bash/bash-original.svg" alt="Bash">
     <span>Bash</span>
   </div>
 </div>
