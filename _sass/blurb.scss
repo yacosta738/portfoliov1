@@ -1,0 +1,98 @@
+.blurb {
+  padding: 2rem 0;
+  background: #0004a5;
+  font-family: VT323,monospace
+}
+
+.blurb .container {
+  max-width: 90%;
+  background-color: #bbb;
+  border-color: #000;
+  border-style: solid;
+  border-width: .875px 2px;
+  padding: 6.125px 11.5px 7px 10.5px;
+  box-shadow: -3.5px -7px 0 0 #bbb,2.5px 6.125px 0 0 #bbb,-3.5px 6.125px 0 0 #bbb,2.5px -7px 0 0 #bbb;
+  -webkit-filter: drop-shadow(7px 8px 0 #000);
+  filter: drop-shadow(7px 8px 0 black);
+  margin: 7px auto 10px
+}
+
+.blurb p {
+  color: #000;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 400
+}
+
+.blurb p:last-of-type {
+  margin-bottom: .5rem
+}
+
+.blurb h3 {
+  padding-left: 1rem;
+  font-size: 32px;
+  line-height: 1
+}
+
+.blurb a,.blurb h3 {
+  background: #000;
+  color: #bbb;
+  font-weight: 400
+}
+
+.blurb a {
+  border-width: 0
+}
+
+.blurb a:hover {
+  color: #fff;
+  background: #04a1a1;
+  font-weight: 400;
+  border-width: 0
+}
+
+.blurb a.button {
+  border-color: #04a1a1;
+  background: #04a1a1;
+  color: #fff;
+  border-radius: 0;
+  font-size: 24px;
+  padding: .25rem .75rem;
+  -webkit-filter: drop-shadow(7px 8px 0 #000);
+  filter: drop-shadow(7px 8px 0 black);
+  margin-top: .25rem
+}
+
+.blurb a.button:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #000
+}
+
+@media screen and (min-width: 800px) {
+  .blurb {
+    padding:3.5rem 0
+  }
+
+  .blurb .container {
+    display: flex;
+    max-width: calc(825px - 4rem)
+  }
+
+  .avatar {
+    display: block;
+    max-width: 180px
+  }
+
+  .blurb p {
+    font-size: 32px
+  }
+
+  .blurb h3 {
+    font-size: 40px
+  }
+
+  .blurb a.button {
+    font-size: 32px
+  }
+}

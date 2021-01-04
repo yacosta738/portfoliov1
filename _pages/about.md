@@ -6,7 +6,7 @@ date: 2020-01-29
 ---
 
 <br>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+
 <p align="center">
   <img src="/assets/images/about/photo-portada.png">
 </p>
@@ -67,266 +67,225 @@ Santa Clara, Cuba
 ## Experiencia
 ### Lenguajes de programación
 
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-java-plain"></i>
-            <h3 class="cbp-ig-title">java</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-kotlin-plain"></i>
-            <h3 class="cbp-ig-title">kotlin</h3>
-          </span>
-        </li>           
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-scala-plain"></i>
-            <h3 class="cbp-ig-title">scala</h3>
-          </span>
-        </li>        
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-javascript-plain"></i>
-            <h3 class="cbp-ig-title">javascript</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-typescript-plain"></i>
-            <h3 class="cbp-ig-title">typescript</h3>
-          </span>
-        </li>
-          <li>
-          <span>
-            <i class="cbp-ig-icon devicon-python-plain"></i>
-            <h3 class="cbp-ig-title">python</h3>
-          </span>
-        </li>
-          <li>
-          <span>
-            <i class="cbp-ig-icon devicon-dart-plain"></i>
-            <h3 class="cbp-ig-title">dart</h3>
-          </span>
-        </li>
-          <li>
-          <span>
-            <i class="cbp-ig-icon devicon-r-plain"></i>
-            <h3 class="cbp-ig-title">r</h3>
-          </span>
-        </li>
-          <li>
-          <span>
-            <i class="cbp-ig-icon devicon-c-plain"></i>
-            <h3 class="cbp-ig-title">c</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-php-plain"></i>
-            <h3 class="cbp-ig-title">php</h3>
-          </span>
-        </li>
-  </ul>
-### Gestores de Bases de Datos
-- SQL: 
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-postgresql-plain"></i>
-            <h3 class="cbp-ig-title">postgresql</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-mysql-plain"></i>
-            <h3 class="cbp-ig-title">mysql</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-sqlite-plain"></i>
-            <h3 class="cbp-ig-title">sqlite</h3>
-          </span>
-        </li>
-  </ul>
+<div class="grid">
+  <div>
+    <img src="/assets/images/logo/java/java-original.svg" alt="Java">
+    <span>Java</span>
+  </div>
+  <div> 
+    <img src="/assets/images/logo/kotlin/kotlin-original.svg" alt="Kotlin">
+    <span>Kotlin</span>  
+  </div>
+  <div>
+    <img src="/assets/images/logo/scala/scala-original.svg" alt="Scala">
+    <span>Scala</span>
+  </div>
+  <div>
+    <img src="/assets/images/logo/javascript/javascript-original.svg" alt="JavaScript">
+    <span>JavaScript</span>
+  </div>
+  <div>
+    <img src="/assets/images/logo/typescript/typescript-original.svg" alt="Typescript">
+    <span>TypeScript</span>
+  </div>  
+  <div>
+    <img src="/assets/images/logo/python/python-original.svg" alt="Python">
+    <span>Python</span>
+  </div>  
+  <div>
+    <img src="/assets/images/logo/php/php-original.svg" alt="Php">
+    <span>Php</span>
+  </div>  
+  <div>
+    <img src="/assets/images/logo/c/c-original.svg" alt="C">
+    <span>C</span>
+  </div>
+  <div>
+    <img src="/assets/images/logo/bash" alt="Bash">
+    <span>Bash</span>
+  </div>
+</div>
 
-- NoSQL:  
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-mongodb-plain"></i>
-            <h3 class="cbp-ig-title">mongodb</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-couchdb-plain"></i>
-            <h3 class="cbp-ig-title">couchdb</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-redis-plain"></i>
-            <h3 class="cbp-ig-title">redis</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-neo4j-plain"></i>
-            <h3 class="cbp-ig-title">neo4j</h3>
-          </span>
-        </li>
-  </ul>
+### Gestores de Bases de Datos
+- SQL:
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/microsoft-sql-server/microsoft-sql-server.svg" alt="SQL Server">
+      <span>SQL Server</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/postgresql/postgresql-original.svg" alt="PostgreSQL">
+      <span>PostgreSQL</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/mysql/mysql-original.svg" alt="MySQL">
+      <span>MySQL</span>
+    </div>
+    <div>
+      <img src="/assets/images/logo/sqlite/sqlite.svg" alt="SQLite">
+      <span>SQLite</span>
+    </div>
+    <div>
+      <img src="/assets/images/logo/h2/h2.png" alt="H2">
+      <span>H2</span>
+    </div>
+  </div>
+
+- NoSQL:
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/neo4j/neo4j-icon.svg" alt="Neo4j">
+      <span>Neo4j</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/mongodb/mongodb-original.svg" alt="MongoDB">
+      <span>MongoDB</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/couchdb/couchdb-original.svg" alt="Couchbase">
+      <span>Couchbase</span>
+    </div>
+    <div>
+      <img src="/assets/images/logo/redis/redis-original.svg" alt="Redis">
+      <span>Redis</span>
+    </div>
+  </div>
 
 ### Lenguaje de diseño gráfico:
-  
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-css3-plain"></i>
-            <h3 class="cbp-ig-title">css3</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-sass-plain"></i>
-            <h3 class="cbp-ig-title">sass</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-less-plain"></i>
-            <h3 class="cbp-ig-title">less</h3>
-          </span>
-        </li>
-  </ul>
+
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/css3/css3-original.svg" alt="CSS3">
+      <span>CSS3</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/sass/sass-original.svg" alt="SASS">
+      <span>SASS</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/less/less-plain-wordmark.svg" alt="LESS">
+      <span>LESS</span>
+    </div>
+  </div>
+
 
 ### Lenguaje de Marcado:
 
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-html5-plain"></i>
-            <h3 class="cbp-ig-title">html5</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-xml-plain"></i>
-            <h3 class="cbp-ig-title">xml</h3>
-          </span>
-        </li>
-  </ul>
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/html5/html5-original.svg" alt="HTML5">
+      <span>HTML5</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/xml/xml.svg" alt="XML">
+      <span>XML</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/xhtml/xhtml.svg" alt="XHTML">
+      <span>XHTML</span>
+    </div>
+  </div>
 
 ### Frameworks y bibliotecas:
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-springboot-plain"></i>
-            <h3 class="cbp-ig-title">spring boot</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-laravel-plain"></i>
-            <h3 class="cbp-ig-title">laravel</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-vuejs-plain"></i>
-            <h3 class="cbp-ig-title">vuejs</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-angularjs-plain"></i>
-            <h3 class="cbp-ig-title">angular</h3>
-          </span>
-        </li> 
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-flutter-plain"></i>
-            <h3 class="cbp-ig-title">flutter</h3>
-          </span>
-        </li>
-  </ul>
+
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/spring-boot/spring-boot.svg" alt="Spring Boot">
+      <span>Spring Boot</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/laravel/laravel-plain.svg" alt="Laravel">
+      <span>Laravel</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/vuejs/vuejs-original.svg" alt="VueJS">
+      <span>VueJS</span>
+    </div>    
+    <div>
+      <img src="/assets/images/logo/angularjs/angularjs-original.svg" alt="Angular">
+      <span>Angular</span>
+    </div> 
+    <div>
+      <img src="/assets/images/logo/flutter/flutter-original.svg" alt="Flutter">
+      <span>Flutter</span>
+    </div>
+  </div>
 
 ### Infraestructura y Sistemas Operativos:
 
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-windows8-plain"></i>
-            <h3 class="cbp-ig-title">windows</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-linux-plain"></i>
-            <h3 class="cbp-ig-title">linux</h3>
-          </span>
-        </li>
-  </ul>
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/windows8/windows8-original.svg" alt="Windows">
+      <span>Windows</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/linux/linux-original.svg" alt="Linux">
+      <span>Linux</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/android/android-original.svg" alt="Android">
+      <span>Android</span>
+    </div>   
+    <div>
+      <img src="/assets/images/logo/amazonwebservices/amazonwebservices-original.svg" alt="AWS">
+      <span>AWS</span>
+    </div>
+  </div>
 
 
 #### Virtualización: 
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-docker-plain"></i>
-            <h3 class="cbp-ig-title">docker</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-vmware-plain"></i>
-            <h3 class="cbp-ig-title">vmware</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-hyperv-plain"></i>
-            <h3 class="cbp-ig-title">hyper-v</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-virtualbox-plain"></i>
-            <h3 class="cbp-ig-title">virtual box</h3>
-          </span>
-        </li>
-  </ul>
+
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/docker/docker-original.svg" alt="Docker">
+      <span>Docker</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/virtual-box/virtual-box.svg" alt="Virtual Box">
+      <span>Virtual Box</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/vmware/vmware.svg" alt="VMWare">
+      <span>VMWare</span>
+    </div>
+  </div>
 
 ### Otras tecnologías:
-  <ul class="cbp-ig-grid">
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-maven-plain"></i>
-            <h3 class="cbp-ig-title">maven</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-gradle-plain"></i>
-            <h3 class="cbp-ig-title">gradle</h3>
-          </span>
-        </li>
-      <li>
-          <span>
-            <i class="cbp-ig-icon devicon-jhipster-plain"></i>
-            <h3 class="cbp-ig-title">jhipster</h3>
-          </span>
-        </li>
-        <li>
-          <span>
-            <i class="cbp-ig-icon devicon-junit-plain"></i>
-            <h3 class="cbp-ig-title">junit</h3>
-          </span>
-        </li>
-  </ul>
+
+  <div class="grid">
+    <div>
+      <img src="/assets/images/logo/maven/maven.svg" alt="Maven">
+      <span>Maven</span>
+    </div>
+    <div> 
+      <img src="/assets/images/logo/gradle/gradle.svg" alt="Gradle">
+      <span>Gradle</span>  
+    </div>    
+    <div> 
+      <img src="/assets/images/logo/jhipster/jhipster.svg" alt="JHipster">
+      <span>JHipster</span>  
+    </div>
+    <div>
+      <img src="/assets/images/logo/jest/jest.svg" alt="Jest">
+      <span>Jest</span>
+    </div>    
+    <div>
+      <img src="/assets/images/logo/jenkins/jenkins-original.svg" alt="Jenkins">
+      <span>Jenkins</span>
+    </div>    
+    <div>
+      <img src="/assets/images/logo/yarn/yarn-original.svg" alt="Yarn">
+      <span>Yarn</span>
+    </div>   
+    <div>
+      <img src="/assets/images/logo/npm/npm-original-wordmark.svg" alt="NPM">
+      <span>NPM</span>
+    </div>   
+    <div>
+      <img src="/assets/images/logo/openshift/openshift.svg" alt="Openshift">
+      <span>Openshift</span>
+    </div>
+  </div>
 
 ###  Habilidades agradables:
 - Conocimiento / experiencia en TDD, BDD (Test Driven Development, Behavior Driven Development)
