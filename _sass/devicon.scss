@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   grid-gap: 2em;
-  padding: 5px 5px 5px 5px;
+  padding: 10px 10px 10px 10px;
   > div {
     background: lightgrey;
     border-radius: 10px;
