@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-05T09:00:27-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry xml:lang="es"><title type="html">Cuenta regresiva para el nuevo Año (Sistema planetario)</title><link href="http://localhost:4000/countdown-to-new-year-astronomy/" rel="alternate" type="text/html" title="Cuenta regresiva para el nuevo Año (Sistema planetario)" /><published>2020-12-27T00:00:00-05:00</published><updated>2020-12-27T00:00:00-05:00</updated><id>http://localhost:4000/countdown-to-new-year-astronomy</id><content type="html" xml:base="http://localhost:4000/countdown-to-new-year-astronomy/">&lt;p&gt;&lt;img src=&quot;/assets/images/countdown-to-new-year/portada.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-05T09:09:06-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry xml:lang="es"><title type="html">Cuenta regresiva para el nuevo Año (Sistema planetario)</title><link href="http://localhost:4000/countdown-to-new-year-astronomy/" rel="alternate" type="text/html" title="Cuenta regresiva para el nuevo Año (Sistema planetario)" /><published>2020-12-27T00:00:00-05:00</published><updated>2020-12-27T00:00:00-05:00</updated><id>http://localhost:4000/countdown-to-new-year-astronomy</id><content type="html" xml:base="http://localhost:4000/countdown-to-new-year-astronomy/">&lt;p&gt;&lt;img src=&quot;/assets/images/countdown-to-new-year/portada.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;La astronomía y la programación son dos de mis pasiones que en esta ocasión he decidido juntar. Con este objetivo crearemos una web sencilla para llevar la cuenta regresiva de cuantos días faltan hasta el nuevo año simulando el movimiento del planeta tierra. El demo se puede apreciar en el siguiente link &lt;a href=&quot;https://yacosta738.github.io/countdown-to-new-year/&quot;&gt;https://yacosta738.github.io/countdown-to-new-year/&lt;/a&gt;&lt;/p&gt;
 
@@ -521,13 +521,13 @@ Estructura general del proyecto final
                 open-source contribuidor. Publico guias y tutoriales sobre
                 programación, diseño e inteligencia artificial.
             &lt;/p&gt;
-&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
-&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
-&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                &lt;a class=&quot;button&quot; href=&quot;mailto:yunielacosta738@gmail.com&quot; rel=&quot;noreferrer&quot;&gt;
+                    Contáctame&lt;/a&gt;
 &lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
 &lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
 &lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
-&lt;!--            &lt;/p&gt;--&gt;
+            &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/section&gt;
@@ -699,13 +699,13 @@ Widget build(BuildContext context) {
                 open-source contribuidor. Publico guias y tutoriales sobre
                 programación, diseño e inteligencia artificial.
             &lt;/p&gt;
-&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
-&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
-&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                &lt;a class=&quot;button&quot; href=&quot;mailto:yunielacosta738@gmail.com&quot; rel=&quot;noreferrer&quot;&gt;
+                    Contáctame&lt;/a&gt;
 &lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
 &lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
 &lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
-&lt;!--            &lt;/p&gt;--&gt;
+            &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/section&gt;
@@ -1156,13 +1156,13 @@ Espero que les sirva de ayuda en caso que quieran tener configurado de forma glo
                 open-source contribuidor. Publico guias y tutoriales sobre
                 programación, diseño e inteligencia artificial.
             &lt;/p&gt;
-&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
-&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
-&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                &lt;a class=&quot;button&quot; href=&quot;mailto:yunielacosta738@gmail.com&quot; rel=&quot;noreferrer&quot;&gt;
+                    Contáctame&lt;/a&gt;
 &lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
 &lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
 &lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
-&lt;!--            &lt;/p&gt;--&gt;
+            &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/section&gt;
