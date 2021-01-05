@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-04T12:13:51-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry><title type="html">Cuenta regresiva para el nuevo Año (Sistema planetario)</title><link href="http://localhost:4000/countdown-to-new-year-astronomy/" rel="alternate" type="text/html" title="Cuenta regresiva para el nuevo Año (Sistema planetario)" /><published>2020-12-27T00:00:00-05:00</published><updated>2020-12-27T00:00:00-05:00</updated><id>http://localhost:4000/countdown-to-new-year-astronomy</id><content type="html" xml:base="http://localhost:4000/countdown-to-new-year-astronomy/">&lt;p&gt;&lt;img src=&quot;/assets/images/countdown-to-new-year/portada.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-05T09:00:27-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nómada Digital</title><subtitle>Artículos sobre programación e investigaciones</subtitle><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><entry xml:lang="es"><title type="html">Cuenta regresiva para el nuevo Año (Sistema planetario)</title><link href="http://localhost:4000/countdown-to-new-year-astronomy/" rel="alternate" type="text/html" title="Cuenta regresiva para el nuevo Año (Sistema planetario)" /><published>2020-12-27T00:00:00-05:00</published><updated>2020-12-27T00:00:00-05:00</updated><id>http://localhost:4000/countdown-to-new-year-astronomy</id><content type="html" xml:base="http://localhost:4000/countdown-to-new-year-astronomy/">&lt;p&gt;&lt;img src=&quot;/assets/images/countdown-to-new-year/portada.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;La astronomía y la programación son dos de mis pasiones que en esta ocasión he decidido juntar. Con este objetivo crearemos una web sencilla para llevar la cuenta regresiva de cuantos días faltan hasta el nuevo año simulando el movimiento del planeta tierra. El demo se puede apreciar en el siguiente link &lt;a href=&quot;https://yacosta738.github.io/countdown-to-new-year/&quot;&gt;https://yacosta738.github.io/countdown-to-new-year/&lt;/a&gt;&lt;/p&gt;
 
@@ -505,7 +505,33 @@ const countDown = setInterval(function () {
 Estructura general del proyecto final
 &lt;/p&gt;
 
-&lt;p&gt;Todo el código se puede descargar desde GitHub en el siguiente link &lt;a href=&quot;https://github.com/yacosta738/countdown-to-new-year&quot;&gt;https://github.com/yacosta738/countdown-to-new-year&lt;/a&gt;&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Desarrollo web" /><category term="JavaScript" /><category term="CSS" /><category term="Nuevo Año" /><summary type="html">Eres fanático de la astronomía y del desarrollo web, pues si es así te enseño como crear una página para llevar la cuenta regresiva para el nuevo año</summary></entry><entry><title type="html">Agregar un selector de imágenes a una aplicación hecha en Flutter</title><link href="http://localhost:4000/agregar-selector-imagen-flutter/" rel="alternate" type="text/html" title="Agregar un selector de imágenes a una aplicación hecha en Flutter" /><published>2020-12-18T00:00:00-05:00</published><updated>2020-12-18T00:00:00-05:00</updated><id>http://localhost:4000/agregar-selector-imagen-flutter</id><content type="html" xml:base="http://localhost:4000/agregar-selector-imagen-flutter/">&lt;p&gt;&lt;img src=&quot;/assets/images/flutter-selector-imagen/portada.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Todo el código se puede descargar desde GitHub en el siguiente link &lt;a href=&quot;https://github.com/yacosta738/countdown-to-new-year&quot;&gt;https://github.com/yacosta738/countdown-to-new-year&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;section class=&quot;blurb&quot;&gt;
+    &lt;div class=&quot;blurb-container&quot;&gt;
+        &lt;div&gt;
+            &lt;img src=&quot;/assets/images/avatar.png&quot; alt=&quot;Yuniel&quot; class=&quot;blurb-avatar&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&quot;blurb-title&quot;&gt;About the author&lt;/span&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                Hola, soy &lt;a href=&quot;/about&quot;&gt;Yuniel&lt;/a&gt;, un software engineer, y
+                open-source contribuidor. Publico guias y tutoriales sobre
+                programación, diseño e inteligencia artificial.
+            &lt;/p&gt;
+&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
+&lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
+&lt;!--            &lt;/p&gt;--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;hr /&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Desarrollo web" /><category term="JavaScript" /><category term="CSS" /><category term="Nuevo Año" /><summary type="html">Eres fanático de la astronomía y del desarrollo web, pues si es así te enseño como crear una página para llevar la cuenta regresiva para el nuevo año</summary></entry><entry xml:lang="es"><title type="html">Agregar un selector de imágenes a una aplicación hecha en Flutter</title><link href="http://localhost:4000/agregar-selector-imagen-flutter/" rel="alternate" type="text/html" title="Agregar un selector de imágenes a una aplicación hecha en Flutter" /><published>2020-12-18T00:00:00-05:00</published><updated>2020-12-18T00:00:00-05:00</updated><id>http://localhost:4000/agregar-selector-imagen-flutter</id><content type="html" xml:base="http://localhost:4000/agregar-selector-imagen-flutter/">&lt;p&gt;&lt;img src=&quot;/assets/images/flutter-selector-imagen/portada.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;El selector de imágenes es un componente común que a menudo se necesita para cambiar las fotos de los perfiles de
 usuario entre muchas otras opciones donde es necesario subir una imagen. Con el fin de proveer a nuestra aplicación de
@@ -657,7 +683,33 @@ Widget build(BuildContext context) {
 
 &lt;p align=&quot;center&quot;&gt;
 &lt;img src=&quot;/assets/images/flutter-selector-imagen/resultado.gif&quot; /&gt;
-&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Flutter" /><category term="Android" /><category term="iOS" /><category term="Cámara" /><category term="Galería de Imágenes" /><summary type="html">En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos</summary></entry><entry><title type="html">Configurar proxy global en linux</title><link href="http://localhost:4000/configurar-proxy-global-en-linux/" rel="alternate" type="text/html" title="Configurar proxy global en linux" /><published>2020-12-08T00:00:00-05:00</published><updated>2020-12-08T00:00:00-05:00</updated><id>http://localhost:4000/configurar-proxy-global-en-linux</id><content type="html" xml:base="http://localhost:4000/configurar-proxy-global-en-linux/">&lt;p&gt;&lt;img src=&quot;/assets/images/proxy-global/portada-proxy.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;section class=&quot;blurb&quot;&gt;
+    &lt;div class=&quot;blurb-container&quot;&gt;
+        &lt;div&gt;
+            &lt;img src=&quot;/assets/images/avatar.png&quot; alt=&quot;Yuniel&quot; class=&quot;blurb-avatar&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&quot;blurb-title&quot;&gt;About the author&lt;/span&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                Hola, soy &lt;a href=&quot;/about&quot;&gt;Yuniel&lt;/a&gt;, un software engineer, y
+                open-source contribuidor. Publico guias y tutoriales sobre
+                programación, diseño e inteligencia artificial.
+            &lt;/p&gt;
+&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
+&lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
+&lt;!--            &lt;/p&gt;--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;hr /&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Programación" /><category term="Flutter" /><category term="Android" /><category term="iOS" /><category term="Cámara" /><category term="Galería de Imágenes" /><summary type="html">En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos</summary></entry><entry xml:lang="es"><title type="html">Configurar proxy global en linux</title><link href="http://localhost:4000/configurar-proxy-global-en-linux/" rel="alternate" type="text/html" title="Configurar proxy global en linux" /><published>2020-12-08T00:00:00-05:00</published><updated>2020-12-08T00:00:00-05:00</updated><id>http://localhost:4000/configurar-proxy-global-en-linux</id><content type="html" xml:base="http://localhost:4000/configurar-proxy-global-en-linux/">&lt;p&gt;&lt;img src=&quot;/assets/images/proxy-global/portada-proxy.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En sistemas operativos GNU/Linux cuando nos encontramos detrás de un servidor proxy, puede volverse un poco engorroso 
 utilizar programas que no tengan configuración propia para proxy o comandos como apt-get, o simplemente lo queremos 
@@ -1088,76 +1140,30 @@ aplicaciones salgan a internet a través de Windscribe ejecutamos el comando:&lt
 
 &lt;p&gt;Estas son algunas de las opciones que existen para configurar la salida a internet a través de un proxy en sistemas operativos GNU-Linux.
 De todas las variantes mostradas en este artículo mi favorita sin dudas es windscribe por todas las facilidades que ofrece.
-Espero que les sirva de ayuda en caso que quieran tener configurado de forma global un proxy en linux.&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Proxy" /><category term="VPN" /><category term="Linux" /><category term="Global Proxy" /><category term="Proxifier" /><category term="Redsock" /><category term="Windscribe" /><category term="Proxychains" /><summary type="html">En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux</summary></entry><entry><title type="html">Creando una antena casera direccional de largo alcance</title><link href="http://localhost:4000/antena-casera-largo-alcance/" rel="alternate" type="text/html" title="Creando una antena casera direccional de largo alcance" /><published>2020-11-29T00:00:00-05:00</published><updated>2020-11-29T00:00:00-05:00</updated><id>http://localhost:4000/antena-casera-largo-alcance</id><content type="html" xml:base="http://localhost:4000/antena-casera-largo-alcance/">&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/portada-antena.jpg&quot; /&gt;
-&lt;/p&gt;
+Espero que les sirva de ayuda en caso que quieran tener configurado de forma global un proxy en linux.&lt;/p&gt;
 
-&lt;h2 id=&quot;cómo-crear-una-antena-casera-de-largo-alcance&quot;&gt;¿Cómo crear una antena casera de largo alcance?&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;Hoy aprenderás a crear una antena casera para que tu nivel de Hack llegue a distancias inimaginables.&lt;/p&gt;
-
-&lt;p&gt;Empecemos por el principio, ¿por qué elementos está compuesta la antena?&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/antena.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Parecerá una broma, pero no… es una lata de Pringles. Estas latas pueden convertirse en antenas WiFi caseras direccionales, otorgándonos la capacidad de recibir señales inalámbricas de aquellas redes que se encuentren bastante lejos.&lt;/p&gt;
-
-&lt;p&gt;Algunos de los componentes que vamos a estar comentando los podrás conseguir en la ferretería más cercana o de confianza. Esto es simplemente acercaros a la persona que os atienda y le comentáis que queréis estar Hack… ya con esto, sabrá a qué habéis venido y lo que estáis buscando.&lt;/p&gt;
-
-&lt;p&gt;El primer paso que debes seguir es colocar la lata vacía de Pringles sobre una mesa y medir la longitud de la misma con una cinta métrica. Marca un punto sobre su punto medio, con un permanente o con lo que consideres (mientras lo veas)… ya que en caso de usar un trípode tendrás que engancharlo en este punto para equilibrar el peso y lograr estabilidad, resultando más sencillo maniobrar con nuestro experimento.&lt;/p&gt;
-
-&lt;p&gt;¿Qué hay dentro de la lata?, vamos a echarle un ojo:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/interior-lata1.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Os lo muestro también con la parte superior destapada para los/as curiosos/as:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/interior-lata2.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Como se puede apreciar, necesitaréis de una varilla roscada de 140 mm de longitud y 3 mm de grosor. Lo más probable es que también necesitéis 5 arandelas (una de ellas en la imagen no se aprecia porque estaría por el otro lado de la lata, la cual sustenta toda la base de la antena bajo presión acompañándola de una tuerca).&lt;/p&gt;
-
-&lt;p&gt;Si hacemos cálculos, tuercas en total… necesitarías 8 (sin contar con la que está por el otro lado).&lt;/p&gt;
-
-&lt;p&gt;El conjunto de arandelas con la varilla, facilita la recepción de las ondas de frecuencia WiFi (2.4 GHZ) en el interior del tubo, el cual es de papel de aluminio, reflejando así en el culo del bote la señal y amplificando en consecuencia la misma sobre la llave USB WiFi:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/medidasexactas.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;A la hora de montar las tuercas y arandelas, debéis ser meticulosos con las medidas entre arandelas grandes… pues conseguiremos así que la onda realice la parábola lo mejor posible:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/medidas.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Una vez con todo esto montado, obviamente… necesitamos de un sistema de sujeción.&lt;/p&gt;
-
-&lt;p&gt;Por un lado, deberemos sujetar el final de la antena. Para ello, mediante un hueco en la tapa de la lata, pasaremos un clavo en el centro. Dicho extremo de la sujeción atrapará el clavo por dentro de la lata, pudiendo así cerrarla y dejando el interior terminado.&lt;/p&gt;
-
-&lt;p&gt;Por otro lado, en cuanto al exterior… mediante otro sistema de agarre, sostendremos el clavo por fuera, enganchando el mismo a un cable coaxial por el centro:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/enganche.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Desde que ya tengamos todo esto conectado, el extremo del cable coaxial tan solo lo tendremos que enganchar a nuestro conector USB WiFi:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/conexionfinal.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;En la imagen adjunta, el recepetor de señales tiene la propia antena que viene por defecto puesta… pero es en este punto cuando se la quitaremos y la conectaremos a la antena formada por el bote de Pringles.&lt;/p&gt;
-
-&lt;p&gt;Finalmente, la antena quedaría de la siguiente forma:&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/images/antenacasera/hack.jpg&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;De manera casi inmediata, notaremos que el nivel de Hack habrá aumentado y ya estaremos preparados para ver una gran cantidad de redes WiFi en el entorno.&lt;/p&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Pentesting" /><category term="OSWP" /><category term="Antena Casera" /><summary type="html">¿Te gustaría aprender a crear una antena casera de largo alcance?, toma asiento que te lo explico.</summary></entry></feed>
+&lt;section class=&quot;blurb&quot;&gt;
+    &lt;div class=&quot;blurb-container&quot;&gt;
+        &lt;div&gt;
+            &lt;img src=&quot;/assets/images/avatar.png&quot; alt=&quot;Yuniel&quot; class=&quot;blurb-avatar&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&quot;blurb-title&quot;&gt;About the author&lt;/span&gt;
+            &lt;p class=&quot;blurb-p&quot;&gt;
+                Hola, soy &lt;a href=&quot;/about&quot;&gt;Yuniel&lt;/a&gt;, un software engineer, y
+                open-source contribuidor. Publico guias y tutoriales sobre
+                programación, diseño e inteligencia artificial.
+            &lt;/p&gt;
+&lt;!--            &lt;p class=&quot;blurb-p&quot;&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://taniarascia.substack.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Join newsletter&lt;/a&gt;--&gt;
+&lt;!--                &lt;a class=&quot;button&quot; href=&quot;https://ko-fi.com/taniarascia&quot; target=&quot;_blank&quot;--&gt;
+&lt;!--                   rel=&quot;noreferrer&quot;&gt;--&gt;
+&lt;!--                    Buy me a coffee&lt;/a&gt;--&gt;
+&lt;!--            &lt;/p&gt;--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;hr /&gt;</content><author><name>Yuniel Acosta Pérez</name><email>yunielacosta738@gmail.com</email></author><category term="Proxy" /><category term="VPN" /><category term="Linux" /><category term="Global Proxy" /><category term="Proxifier" /><category term="Redsock" /><category term="Windscribe" /><category term="Proxychains" /><summary type="html">En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux</summary></entry></feed>

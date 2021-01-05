@@ -3,6 +3,7 @@ layout: single
 title: Agregar un selector de imágenes a una aplicación hecha en Flutter
 excerpt: "En este artículo se muestra como agregar un selector de imágenes a una aplicación hecha en flutter. Las imágenes se podrán escoger desde la cámara del dispositivo o de la galería de fotos"
 date: 2020-12-18
+lang: es
 classes: wide
 header:
   teaser: /assets/images/flutter-selector-imagen/portada.png
@@ -176,3 +177,5 @@ Listo, ejecute la aplicación y debería ver algo como esto.
 <p align="center">
 <img src="/assets/images/flutter-selector-imagen/resultado.gif">
 </p>
+
+{% include acosta-blurb.html %}

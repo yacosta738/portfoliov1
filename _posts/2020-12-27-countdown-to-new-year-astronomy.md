@@ -3,6 +3,8 @@ layout: single
 title: Cuenta regresiva para el nuevo Año (Sistema planetario)
 excerpt: "Eres fanático de la astronomía y del desarrollo web, pues si es así te enseño como crear una página para llevar la cuenta regresiva para el nuevo año"
 date: 2020-12-27
+lang: es
+ref: countdown-to-new-year-astronomy
 classes: wide
 header:
   teaser: /assets/images/countdown-to-new-year/portada.jpg
@@ -533,3 +535,5 @@ Estructura general del proyecto final
 </p>
 
 Todo el código se puede descargar desde GitHub en el siguiente link [https://github.com/yacosta738/countdown-to-new-year](https://github.com/yacosta738/countdown-to-new-year)
+
+{% include acosta-blurb.html %}

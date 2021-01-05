@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 .blurb {
   padding: 2rem 0;
-  background: #0004a5;
+  background: transparent;
   font-family: VT323,monospace
 }
 
-.blurb .container {
-  max-width: 90%;
+.blurb .blurb-container {
+  max-width: 70%;
   background-color: #bbb;
   border-color: #000;
   border-style: solid;
@@ -17,24 +18,25 @@
   margin: 7px auto 10px
 }
 
-.blurb p {
+.blurb p.blurb-p {
   color: #000;
   font-size: 24px;
   line-height: 1;
   font-weight: 400
 }
 
-.blurb p:last-of-type {
+.blurb p.blurb-p:last-of-type {
   margin-bottom: .5rem
 }
 
-.blurb h3 {
+.blurb .blurb-title {
+  margin: 15px;
   padding-left: 1rem;
   font-size: 32px;
   line-height: 1
 }
 
-.blurb a,.blurb h3 {
+.blurb a,.blurb span.blurb-title {
   background: #000;
   color: #bbb;
   font-weight: 400
@@ -74,21 +76,23 @@
     padding:3.5rem 0
   }
 
-  .blurb .container {
+  .blurb .blurb-container {
     display: flex;
     max-width: calc(825px - 4rem)
   }
 
-  .avatar {
+  .blurb-avatar {
+    margin: 5px;
     display: block;
     max-width: 180px
   }
 
-  .blurb p {
+  .blurb p.blurb-p {
+    margin: 15px;
     font-size: 32px
   }
 
-  .blurb h3 {
+  .blurb span.blurb-title {
     font-size: 40px
   }
 

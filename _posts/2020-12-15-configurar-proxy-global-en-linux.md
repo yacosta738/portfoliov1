@@ -3,6 +3,7 @@ layout: single
 title: Configurar proxy global en linux
 excerpt: "En este artículo comparto algunos tips para configurar un proxy global en sistemas operativos GNU/Linux"
 date: 2020-12-8
+lang: es
 classes: wide
 header:
   teaser: /assets/images/proxy-global/portada-proxy.jpg
@@ -411,3 +412,5 @@ Para consultar la ayuda de windscribe podemos ejecutar el comando `windscribe --
 Estas son algunas de las opciones que existen para configurar la salida a internet a través de un proxy en sistemas operativos GNU-Linux.
 De todas las variantes mostradas en este artículo mi favorita sin dudas es windscribe por todas las facilidades que ofrece.
 Espero que les sirva de ayuda en caso que quieran tener configurado de forma global un proxy en linux.
+
+{% include acosta-blurb.html %}

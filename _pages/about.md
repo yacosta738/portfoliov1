@@ -3,6 +3,7 @@ layout: splash
 title: "Información del autor"
 permalink: /about/
 date: 2020-01-29
+lang: es
 ---
 
 <br>
@@ -107,7 +108,6 @@ Santa Clara, Cuba
 </div>
 
 ### Gestores de Bases de Datos
-- SQL:
   <div class="grid">
     <div>
       <img src="/assets/images/logo/microsoft-sql-server/microsoft-sql-server.svg" alt="SQL Server">
@@ -129,10 +129,6 @@ Santa Clara, Cuba
       <img src="/assets/images/logo/h2/h2.png" alt="H2">
       <span>H2</span>
     </div>
-  </div>
-
-- NoSQL:
-  <div class="grid">
     <div>
       <img src="/assets/images/logo/neo4j/neo4j-icon.svg" alt="Neo4j">
       <span>Neo4j</span>
